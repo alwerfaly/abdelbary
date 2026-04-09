@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abdelbary Algamel — Engineer & Researcher</title>
+<link rel="icon" href="bary.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: rgba(255, 255, 255, 0.55);
+    --warm-white: #f0f9ff;
+    --sand: #bae6fd;
+    --taupe: #94a3b8;
+    --charcoal: #0f172a;
+    --brown: #1e3a5f;
+    --accent: #2563eb;
+    --accent-light: #60a5fa;
+    --gold: #38bdf8;
+    --gold-light: #7dd3fc;
+    --text-muted: #64748b;
+    --border: rgba(37, 99, 235, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --glass-bg: rgba(255, 255, 255, 0.42);
+    --glass-bg-strong: rgba(255, 255, 255, 0.62);
+    --shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+    --shadow-glass: 0 8px 32px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    --nav-offset: 5.75rem;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    overflow-x: hidden;
+    cursor: none;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 100% 70% at 0% 0%, rgba(186, 230, 253, 0.65) 0%, transparent 55%),
+      radial-gradient(ellipse 90% 60% at 100% 30%, rgba(191, 219, 254, 0.55) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(224, 242, 254, 0.9) 0%, transparent 45%),
+      linear-gradient(165deg, #f0f9ff 0%, #e0f2fe 42%, #dbeafe 100%);
+    background-attachment: fixed;
+  }
+
+  /* CURSOR */
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s ease;
+  }
+  .cursor-follower {
+    width: 32px; height: 32px;
+    border: 1px solid var(--accent-light);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: all 0.25s ease;
+    opacity: 0.6;
+  }
+  a:hover ~ .cursor-follower, a:hover .cursor-follower {
+    transform: translate(-50%,-50%) scale(1.5);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: #e0f2fe; }
+  ::-webkit-scrollbar-thumb { background: var(--accent-light); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: transparent;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    padding: 1rem 4rem;
+    box-shadow: var(--shadow-glass), 0 1px 0 var(--glass-border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    width: 36px; height: 36px;
+    border-radius: 50%; object-fit: cover;
+    border: 1.5px solid var(--gold);
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
+  }
+  .nav-logo span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 500;
+    color: var(--warm-white);
+    letter-spacing: 0.05em;
+    transition: color 0.4s;
+  }
+  nav.scrolled .nav-logo span { color: var(--charcoal); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.78rem; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--text-muted); }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover { color: var(--gold) !important; }
+
+  /* HERO — full viewport below nav, video uncropped (contain) */
+  #hero {
+    position: relative;
+    padding: var(--nav-offset) 0 0;
+    min-height: calc(100vh - var(--nav-offset));
+    min-height: calc(100dvh - var(--nav-offset));
+    background: #070d18;
+  }
+  .hero-video-shell {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: calc(100vh - var(--nav-offset));
+    height: calc(100dvh - var(--nav-offset));
+    min-height: 280px;
+    overflow: hidden;
+    background: #070d18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-video {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  /* Glass frame overlay — ring only (video stays sharp in the middle) */
+  .hero-glass-frame {
+    position: absolute;
+    z-index: 2;
+    inset: clamp(8px, 1.6vmin, 20px);
+    border-radius: clamp(6px, 1vw, 16px);
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: clamp(5px, 0.85vmin, 11px);
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.08) 38%,
+      rgba(125, 211, 252, 0.18) 72%,
+      rgba(255, 255, 255, 0.16) 100%
+    );
+    background-size: 200% 200%;
+    backdrop-filter: blur(16px) saturate(170%);
+    -webkit-backdrop-filter: blur(16px) saturate(170%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 18px 50px rgba(0, 0, 0, 0.28);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: heroGlassFrame 6s ease-in-out infinite;
+  }
+  .hero-glass-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-sizing: border-box;
+    padding: inherit;
+    background: linear-gradient(
+      110deg,
+      transparent 32%,
+      rgba(255, 255, 255, 0.45) 48%,
+      rgba(255, 255, 255, 0.12) 55%,
+      transparent 68%
+    );
+    background-size: 260% 100%;
+    mix-blend-mode: overlay;
+    animation: heroGlassSheen 9s ease-in-out infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  /* Intro copy moved below video */
+  #intro-head {
+    position: relative;
+    padding: 5.5rem 0 4.5rem;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      #0f172a 0%,
+      #1e3a5f 38%,
+      #e0f2fe 100%
+    );
+  }
+  .hero-content {
+    position: relative;
+    padding: 0 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: slideUp 0.8s 0.6s forwards;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--warm-white);
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: slideUp 0.9s 0.9s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: 0.88rem; font-weight: 300;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+    opacity: 0;
+    animation: slideUp 0.9s 1.2s forwards;
+  }
+  .hero-divider {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    margin: 1.8rem auto;
+    opacity: 0;
+    animation: expandWidth 0.8s 1.5s forwards;
+  }
+  .hero-tagline {
+    font-size: 0.82rem; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    opacity: 0;
+    animation: slideUp 0.8s 1.7s forwards;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .hero-scroll {
+    margin-top: 2.75rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeIn 1s 2.2s forwards;
+  }
+  .hero-scroll span {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* SECTIONS GENERAL */
+  section { padding: 7rem 0; }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent-light); font-weight: 400;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent-light);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400; line-height: 1.1;
+    color: var(--brown);
+    margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* REVEAL ANIMATIONS */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left {
+    opacity: 0; transform: translateX(-28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right {
+    opacity: 0; transform: translateX(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* ABOUT */
+  #about { background: transparent; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-roles {
+    margin-top: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .role-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s ease;
+  }
+  .role-item:hover {
+    border-color: rgba(96, 165, 250, 0.45);
+    background: var(--glass-bg-strong);
+    transform: translateX(4px);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  .role-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.55), rgba(96, 165, 250, 0.35));
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: var(--accent);
+  }
+  .role-text { font-size: 0.85rem; line-height: 1.5; color: var(--brown); }
+  .role-text strong { font-weight: 500; display: block; margin-bottom: 0.1rem; }
+  .lang-tag {
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-muted);
+    border-radius: 100px;
+    transition: all 0.3s;
+  }
+  .lang-tag:hover {
+    background: rgba(125, 211, 252, 0.35);
+    border-color: var(--accent-light);
+    color: var(--brown);
+  }
+
+  /* Languages (inside About) */
+  .about-languages {
+    margin-top: 2.25rem;
+    padding: 1.25rem 1.35rem 1.35rem;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: var(--shadow-glass);
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .about-languages:hover {
+    border-color: rgba(96, 165, 250, 0.35);
+    background: var(--glass-bg-strong);
+    box-shadow: 0 12px 36px rgba(37, 99, 235, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+  .about-languages-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.15rem;
+  }
+  .about-lang-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.5), rgba(96, 165, 250, 0.32));
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .about-lang-copy {
+    flex: 1;
+    min-width: min(100%, 200px);
+  }
+  .about-lang-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.55rem;
+    font-weight: 400;
+  }
+  .about-lang-chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.65rem;
+    margin: 0;
+    padding: 0;
+  }
+  .about-lang-chips .lang-tag {
+    text-transform: none;
+    letter-spacing: 0.03em;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--brown);
+  }
+  .about-visual {
+    position: relative;
+    isolation: isolate;
+    justify-self: center;
+    width: 100%;
+    max-width: min(100%, 380px);
+    margin-inline: auto;
+    padding: 2.5rem 0.5rem 1rem;
+  }
+  .about-photo-shell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 3px;
+    border-radius: 28px;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(186, 230, 253, 0.85) 35%,
+      rgba(96, 165, 250, 0.55) 70%,
+      rgba(125, 211, 252, 0.75) 100%
+    );
+    box-shadow:
+      0 4px 24px rgba(37, 99, 235, 0.12),
+      0 24px 56px rgba(15, 23, 42, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+  .about-photo-frame {
+    position: relative;
+    width: 100%;
+    max-height: min(72vh, 520px);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 25px;
+    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+  }
+  .about-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.5s ease, filter 0.4s ease;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .about-photo-frame:hover img {
+    transform: scale(1.06);
+    filter: saturate(1.1) contrast(1.04);
+  }
+  .about-photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+      inset 0 -20px 40px rgba(15, 23, 42, 0.06);
+  }
+  .about-deco {
+    position: absolute;
+    top: 0.75rem;
+    left: -0.75rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    border: 1px solid rgba(125, 211, 252, 0.5);
+    border-radius: 50%;
+    z-index: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), rgba(186, 230, 253, 0.25));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    pointer-events: none;
+  }
+  .about-stat {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    left: auto;
+    top: auto;
+    z-index: 2;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    padding: 0.85rem 1.15rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-glass), 0 12px 32px rgba(37, 99, 235, 0.15);
+    text-align: center;
+    min-width: 5.5rem;
+  }
+  .about-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .about-stat .lbl {
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-top: 0.2rem;
+    text-transform: uppercase;
+  }
+  .about-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; font-style: italic;
+    color: var(--accent); line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .about-desc {
+    font-size: 0.9rem; line-height: 1.9;
+    color: var(--text-muted);
+  }
+
+  /* RESEARCH */
+  #research { background: transparent; }
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .research-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(170%);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    box-shadow: var(--shadow-glass);
+    transition: all 0.35s ease;
+  }
+  .research-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: linear-gradient(180deg, var(--gold), var(--accent));
+    transition: height 0.35s ease;
+    border-radius: 3px 0 0 3px;
+  }
+  .research-card:hover {
+    box-shadow: 0 16px 48px rgba(37, 99, 235, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    transform: translateY(-4px);
+    border-color: rgba(96, 165, 250, 0.4);
+    background: var(--glass-bg-strong);
+  }
+  .research-card:hover::before { height: 100%; }
+  .research-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300;
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+  .research-card:hover .research-num { color: var(--gold-light); }
+  .research-title {
+    font-size: 0.88rem; line-height: 1.6;
+    color: var(--brown); font-weight: 400;
+    margin-bottom: 1.2rem;
+    padding-right: 2rem;
+  }
+  .research-year {
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--accent-light); text-transform: uppercase;
+    padding-right: 2rem;
+    padding-bottom: 0.35rem;
+  }
+  .research-arrow {
+    position: absolute; bottom: 0.75rem; right: 1rem;
+    width: 22px; height: 22px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.5rem; color: var(--taupe);
+    transition: all 0.3s;
+  }
+  .research-card:hover .research-arrow {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+    border-color: rgba(255, 255, 255, 0.35);
+    color: white;
+  }
+
+  /* WORK */
+  #work { background: transparent; }
+  .work-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .work-item {
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: var(--shadow-glass);
+    display: flex; align-items: center; gap: 1rem;
+    transition: all 0.3s;
+  }
+  .work-item:hover {
+    background: var(--glass-bg-strong);
+    border-color: rgba(96, 165, 250, 0.45);
+    box-shadow: 0 12px 36px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+  .work-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .work-name {
+    font-size: 0.85rem; color: var(--brown);
+    font-weight: 400; line-height: 1.4;
+  }
+
+  /* WORK — flip cards (current roles) */
+  .work-flip {
+    perspective: 1100px;
+    border-radius: 16px;
+    outline: none;
+  }
+  .work-flip-inner {
+    position: relative;
+    min-height: 6.75rem;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+  }
+  @media (hover: hover) {
+    .work-flip:hover .work-flip-inner,
+    .work-flip:focus-within .work-flip-inner {
+      transform: rotateY(180deg);
+    }
+  }
+  @media (hover: none) {
+    .work-flip.is-flipped .work-flip-inner {
+      transform: rotateY(180deg);
+    }
+  }
+  .work-flip-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 1.6rem;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .work-flip-front {
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    background: linear-gradient(135deg, rgba(236, 253, 245, 0.55), rgba(255, 255, 255, 0.5));
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow:
+      var(--shadow-glass),
+      0 0 0 1px rgba(16, 185, 129, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  }
+  @media (hover: hover) {
+    .work-flip:hover .work-flip-front,
+    .work-flip:focus-within .work-flip-front {
+      box-shadow: var(--shadow-glass);
+    }
+  }
+  .work-flip .work-dot {
+    background: linear-gradient(145deg, #34d399, #059669);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.28);
+    animation: workPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes workPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22); }
+    50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.12); }
+  }
+  .work-flip-hint {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #059669;
+    opacity: 0.75;
+  }
+  .work-flip-back {
+    transform: rotateY(180deg);
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 1.5rem 1.25rem;
+    background: linear-gradient(148deg, #065f46 0%, #059669 42%, #10b981 88%);
+    border: 1px solid rgba(167, 243, 208, 0.45);
+    box-shadow:
+      0 14px 44px rgba(5, 150, 105, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+  .work-ongoing-title {
+    font-size: clamp(1.65rem, 4vw, 2.35rem);
+    font-weight: 600;
+    color: #ecfdf5;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.18);
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  }
+  .work-ongoing-en {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(236, 253, 245, 0.88);
+  }
+  .work-flip-front .work-name {
+    flex: 1;
+    min-width: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .work-flip .work-dot { animation: none; }
+    .work-flip-inner {
+      transition: none;
+      transform: none !important;
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .work-flip:hover .work-flip-inner,
+    .work-flip:focus-within .work-flip-inner,
+    .work-flip.is-flipped .work-flip-inner {
+      transform: none !important;
+    }
+    .work-flip-face {
+      position: relative;
+      inset: auto;
+      transform: none !important;
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+    }
+    .work-flip-back {
+      min-height: 5.5rem;
+    }
+    .work-flip-hint { display: none; }
+  }
+  @media (hover: none) {
+    .work-flip-hint--desktop { display: none; }
+    .work-flip { cursor: pointer; }
+  }
+  @media (hover: hover) {
+    .work-flip-hint--touch { display: none; }
+  }
+
+  /* EDUCATION & COMMUNITY */
+  #education { background: transparent; }
+  .edu-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 4.5rem;
+  }
+  .edu-card {
+    padding: 1.5rem 1.65rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: var(--shadow-glass);
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg, var(--gold), var(--accent));
+    border-radius: 3px 0 0 3px;
+    transition: height 0.35s ease;
+  }
+  .edu-card:hover {
+    background: var(--glass-bg-strong);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 14px 44px rgba(37, 99, 235, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+  .edu-card:hover::before { height: 100%; }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--brown);
+    line-height: 1.35;
+    margin-bottom: 0.65rem;
+  }
+  .edu-focus {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1.4;
+    margin: -0.25rem 0 0.55rem;
+  }
+  .edu-institution {
+    font-size: 0.88rem;
+    color: var(--brown);
+    font-weight: 400;
+    line-height: 1.45;
+    margin-bottom: 0.35rem;
+  }
+  .edu-location {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+  }
+  .edu-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem 1rem;
+  }
+  .edu-years {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+  }
+  .edu-gpa {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    background: rgba(255, 255, 255, 0.45);
+    color: var(--brown);
+    font-weight: 500;
+  }
+  .edu-gpa span {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .education-divider {
+    margin: 0 0 2.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.15), transparent);
+    border: none;
+  }
+  .activity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .activity-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.35rem 1.45rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s ease;
+  }
+  .activity-card:hover {
+    border-color: rgba(96, 165, 250, 0.45);
+    background: var(--glass-bg-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+  .activity-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: var(--accent);
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.5), rgba(96, 165, 250, 0.3));
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .activity-body { min-width: 0; }
+  .activity-role {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.35rem;
+  }
+  .activity-name {
+    font-size: 0.88rem;
+    color: var(--brown);
+    font-weight: 400;
+    line-height: 1.45;
+    margin-bottom: 0.4rem;
+  }
+  .activity-when {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* EDUCATION / OTHER */
+  #more { background: transparent; }
+  .more-intro {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    margin: 0 0 2.5rem;
+    text-align: left;
+  }
+  .more-intro strong {
+    color: var(--brown);
+    font-weight: 500;
+  }
+  .more-intro em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05em;
+    color: var(--accent);
+  }
+  .more-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  .more-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--brown);
+    margin-bottom: 1.2rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-glass);
+  }
+  .more-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .more-list li {
+    font-size: 0.84rem; color: var(--text-muted);
+    padding-left: 1rem;
+    border-left: 2px solid var(--gold-light);
+    line-height: 1.5;
+    transition: border-color 0.3s;
+  }
+  .more-list li:hover { border-color: var(--gold); color: var(--brown); }
+
+  /* CONTACT */
+  #contact {
+    background:
+      radial-gradient(ellipse 90% 60% at 10% 20%, rgba(56, 189, 248, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 50% at 90% 80%, rgba(96, 165, 250, 0.12) 0%, transparent 45%),
+      linear-gradient(155deg, #0f172a 0%, #1e3a5f 48%, #0c4a6e 100%);
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  #contact .section-label { color: var(--gold-light); }
+  #contact .section-label::before { background: var(--gold-light); }
+  #contact .section-title { color: rgba(255, 255, 255, 0.96); }
+  #contact .section-title em { color: var(--gold-light); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .email-list {
+    display: flex; flex-direction: column; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .email-item {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition: all 0.3s;
+  }
+  .email-item:hover {
+    border-color: rgba(125, 211, 252, 0.45);
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  .email-purpose {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-light); opacity: 0.7;
+  }
+  .email-addr {
+    font-size: 0.9rem; color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .email-addr:hover { color: var(--gold); }
+  .social-links {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+  }
+  .social-link {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+  .social-link:hover {
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+    background: rgba(56, 189, 248, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+  }
+  .contact-right {
+    display: flex; flex-direction: column; justify-content: center;
+    height: 100%;
+  }
+  .contact-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; font-style: italic;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  .contact-quote strong {
+    color: var(--gold); font-weight: 400; font-style: normal;
+  }
+  .contact-website {
+    font-size: 0.82rem; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: color 0.3s;
+  }
+  .contact-website:hover { color: var(--gold-light); }
+  .contact-website i { font-size: 0.7rem; }
+
+  .contact-form-card {
+    padding: 1.35rem 1.45rem 1.5rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 14px 48px rgba(0, 0, 0, 0.18);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold-light), var(--accent));
+    border-radius: 3px 0 0 3px;
+    opacity: 0.85;
+  }
+  .contact-form-head {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1.1rem;
+  }
+  .contact-form-head i {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(125, 211, 252, 0.28);
+  }
+  .contact-form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.2;
+  }
+  .contact-form-title span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.75;
+    margin-top: 0.25rem;
+  }
+  .contact-field {
+    margin-bottom: 0.8rem;
+  }
+  .contact-field label {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.35rem;
+  }
+  .contact-input,
+  .contact-textarea {
+    width: 100%;
+    padding: 0.62rem 0.85rem;
+    border-radius: 11px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(15, 23, 42, 0.5);
+    color: rgba(255, 255, 255, 0.92);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.84rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .contact-input::placeholder,
+  .contact-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+  }
+  .contact-input:focus,
+  .contact-textarea:focus {
+    outline: none;
+    border-color: rgba(125, 211, 252, 0.55);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+  }
+  .contact-textarea {
+    min-height: 4.75rem;
+    max-height: 9rem;
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .contact-submit {
+    width: 100%;
+    margin-top: 0.15rem;
+    padding: 0.72rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(125, 211, 252, 0.45);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(37, 99, 235, 0.65));
+    color: rgba(255, 255, 255, 0.96);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  .contact-submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(186, 230, 254, 0.65);
+    box-shadow: 0 10px 32px rgba(56, 189, 248, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+  .contact-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .contact-form-status {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    margin-top: 0.85rem;
+    min-height: 1.25em;
+    color: rgba(186, 230, 254, 0.85);
+  }
+  .contact-form-status.is-error {
+    color: #fca5a5;
+  }
+  .contact-form-status.is-success {
+    color: #86efac;
+  }
+  .contact-botcheck {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+  }
+
+  /* ACKNOWLEDGMENTS — light, modern strip */
+  .ack-wrap {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, #f8fafc 38%, #eef6ff 100%);
+    border-top: 1px solid rgba(148, 163, 184, 0.28);
+    padding: 2rem 4rem 2.35rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+  .ack-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .ack-heading {
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--brown);
+    text-align: center;
+    margin: 0 0 1.25rem;
+    font-weight: 500;
+    opacity: 0.85;
+  }
+  .ack-viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  }
+  .ack-viewport:hover .ack-marquee-inner { animation-play-state: paused; }
+  .ack-marquee-inner {
+    display: flex;
+    width: max-content;
+    animation: ackMarquee 38s linear infinite;
+  }
+  @keyframes ackMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .ack-list {
+    display: flex;
+    align-items: stretch;
+    gap: 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+  }
+  .ack-tile {
+    flex: 0 0 auto;
+    width: 172px;
+    height: 104px;
+    min-width: 172px;
+    max-width: 172px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(186, 230, 253, 0.65);
+    border-radius: 18px;
+    box-shadow:
+      0 4px 20px rgba(15, 23, 42, 0.05),
+      0 1px 3px rgba(37, 99, 235, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+    transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+  }
+  .ack-tile:hover {
+    border-color: rgba(96, 165, 250, 0.55);
+    box-shadow:
+      0 10px 36px rgba(37, 99, 235, 0.1),
+      0 2px 8px rgba(15, 23, 42, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+  }
+  .ack-tile img {
+    width: 136px;
+    height: 76px;
+    max-width: 136px;
+    max-height: 76px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ack-marquee-inner {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+      gap: 0.75rem;
+    }
+    .ack-list {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+    }
+    .ack-list[aria-hidden="true"] { display: none; }
+    .ack-viewport {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+
+  /* FOOTER */
+  footer {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  footer span {
+    font-size: 0.72rem; color: rgba(255,255,255,0.2);
+    letter-spacing: 0.04em;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* KEYFRAMES */
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandWidth {
+    from { opacity: 0; width: 0; }
+    to { opacity: 1; width: 40px; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  @keyframes heroGlassFrame {
+    0%, 100% {
+      background-position: 0% 40%;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      background-position: 100% 60%;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.65),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(125, 211, 252, 0.22),
+        0 22px 56px rgba(56, 189, 248, 0.2);
+    }
+  }
+  @keyframes heroGlassSheen {
+    0%, 100% { background-position: 0% 50%; opacity: 0.55; }
+    50% { background-position: 100% 50%; opacity: 0.95; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glass-frame,
+    .hero-glass-frame::after {
+      animation: none;
+    }
+    .hero-glass-frame::after { opacity: 0.5; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    nav.scrolled { padding: 1rem 2rem; }
+    .container { padding: 0 2rem; }
+    .about-grid, .contact-grid, .more-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-grid .about-visual { order: -1; }
+    .research-grid { grid-template-columns: 1fr 1fr; }
+    .work-list { grid-template-columns: 1fr; }
+    .activity-grid { grid-template-columns: 1fr; }
+    .about-visual {
+      max-width: 300px;
+      padding: 1.5rem 0 0;
+      text-align: center;
+    }
+    .about-deco {
+      left: 0.35rem;
+      top: 0.35rem;
+      width: 5rem;
+      height: 5rem;
+    }
+    .about-stat {
+      position: static;
+      margin: 1rem auto 0.25rem;
+      align-self: center;
+      display: inline-block;
+      width: auto;
+    }
+    .nav-links { display: none; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
+    .ack-wrap { padding: 1.5rem 2rem 1.75rem; }
+    .ack-tile {
+      width: 148px;
+      height: 92px;
+      min-width: 148px;
+      max-width: 148px;
+      padding: 0.55rem 0.75rem;
+      border-radius: 14px;
+    }
+    .ack-tile img {
+      width: 118px;
+      height: 66px;
+      max-width: 118px;
+      max-height: 66px;
+    }
+  }
+  @media (max-width: 600px) {
+    .research-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: clamp(2.8rem, 12vw, 4rem); }
+    :root { --nav-offset: 4.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <img src="bary.png" alt="Abdelbary Algamel" />
+    <span>Abdelbary Algamel</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#work">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#more">More</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="Featured video">
+  <div class="hero-video-shell">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="abdo.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-glass-frame" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- INTRO (headline below full video) -->
+<section id="intro-head" aria-labelledby="intro-heading">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Engineer &amp; Researcher — Libya · Turkey</div>
+    <h1 id="intro-heading" class="hero-name">Abdelbary <em>Algamel</em></h1>
+    <p class="hero-subtitle">Communications Engineering &nbsp;·&nbsp; Signal Processing &nbsp;·&nbsp; Image Processing</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Faculty member, researcher, and postgraduate scholar committed to advancing engineering through applied science.</p>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Engineer.<br /><em>Researcher.</em> Educator.</h2>
+        <p class="about-lead">"Bridging theory and technology to solve real-world challenges."</p>
+        <p class="about-desc">Communications engineer with dual master's degrees, active research publications, and experience spanning academia, international organizations, and industry.</p>
+        <div class="about-roles">
+          <div class="role-item">
+            <div class="role-icon"><i class="fas fa-flask"></i></div>
+            <div class="role-text">
+              <strong>Assistant Lecturer</strong>
+              Libyan Center for Engineering Research and Information Technology
+            </div>
+          </div>
+          <div class="role-item">
+            <div class="role-icon"><i class="fas fa-network-wired"></i></div>
+            <div class="role-text">
+              <strong>Technical Engineer</strong>
+              Community Partnership Organization, Libya
+            </div>
+          </div>
+        </div>
+        <div class="about-languages" aria-labelledby="about-lang-heading">
+          <div class="about-languages-inner">
+            <div class="about-lang-icon" aria-hidden="true"><i class="fas fa-language"></i></div>
+            <div class="about-lang-copy">
+              <p class="about-lang-title" id="about-lang-heading">Languages</p>
+              <ul class="about-lang-chips">
+                <li><span class="lang-tag">Arabic</span></li>
+                <li><span class="lang-tag">Turkish</span></li>
+                <li><span class="lang-tag">English</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal-right">
+        <div class="about-deco" aria-hidden="true"></div>
+        <div class="about-photo-shell">
+          <div class="about-photo-frame">
+            <img src="bary.png" alt="Abdelbary Algamel" loading="lazy" decoding="async" />
+          </div>
+          <div class="about-stat">
+            <div class="num">3.95</div>
+            <div class="lbl">Master's GPA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <p class="section-label reveal">Research</p>
+    <h2 class="section-title reveal">Published <em>Papers</em></h2>
+    <div class="research-grid">
+      <a class="research-card reveal" href="https://scholar.google.com/citations?user=w22gIw4AAAAJ" target="_blank" rel="noopener" style="transition-delay:0.05s">
+        <div class="research-num">01</div>
+        <div class="research-title">Adaptive and Optimized RGB Channel Filtering for Noise Reduction in Color Images</div>
+        <div class="research-year">2025 &nbsp;·&nbsp; Signal Processing &amp; Image Analysis</div>
+        <div class="research-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+      <a class="research-card reveal" href="https://scholar.google.com/citations?user=w22gIw4AAAAJ" target="_blank" rel="noopener" style="transition-delay:0.15s">
+        <div class="research-num">02</div>
+        <div class="research-title">Optimization of Power Allocation in NOMA Systems Using Particle Swarm Optimization for BER Minimization</div>
+        <div class="research-year">2025 &nbsp;·&nbsp; Wireless Communications</div>
+        <div class="research-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+      <a class="research-card reveal" href="https://scholar.google.com/citations?user=w22gIw4AAAAJ" target="_blank" rel="noopener" style="transition-delay:0.25s">
+        <div class="research-num">03</div>
+        <div class="research-title">Performance Evaluation of Non-Orthogonal Multiple Access (NOMA) with Digital Modulation Schemes</div>
+        <div class="research-year">2021 &nbsp;·&nbsp; 5G &amp; NOMA Systems</div>
+        <div class="research-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WORK EXPERIENCE -->
+<section id="work">
+  <div class="container">
+    <p class="section-label reveal">Experience</p>
+    <h2 class="section-title reveal">Where I've <em>Worked</em></h2>
+    <div class="work-list">
+      <div class="work-flip reveal" style="transition-delay:0.05s" tabindex="0" role="group" aria-label="Libyan Center for Engineering Research and Information Technology — current role">
+        <div class="work-flip-inner">
+          <div class="work-flip-face work-flip-front">
+            <div class="work-dot" aria-hidden="true"></div>
+            <div class="work-name">Libyan Center for Engineering Research and Information Technology</div>
+            <span class="work-flip-hint work-flip-hint--desktop" aria-hidden="true">Hover</span>
+            <span class="work-flip-hint work-flip-hint--touch" aria-hidden="true">Tap</span>
+          </div>
+          <div class="work-flip-face work-flip-back" aria-hidden="true">
+            <span class="work-ongoing-title">Ongoing</span>
+            <span class="work-ongoing-en">Currently in this role</span>
+          </div>
+        </div>
+      </div>
+      <div class="work-flip reveal" style="transition-delay:0.1s" tabindex="0" role="group" aria-label="Community Partnership Organization — current role">
+        <div class="work-flip-inner">
+          <div class="work-flip-face work-flip-front">
+            <div class="work-dot" aria-hidden="true"></div>
+            <div class="work-name">Community Partnership Organization</div>
+            <span class="work-flip-hint work-flip-hint--desktop" aria-hidden="true">Hover</span>
+            <span class="work-flip-hint work-flip-hint--touch" aria-hidden="true">Tap</span>
+          </div>
+          <div class="work-flip-face work-flip-back" aria-hidden="true">
+            <span class="work-ongoing-title">Ongoing</span>
+            <span class="work-ongoing-en">Currently in this role</span>
+          </div>
+        </div>
+      </div>
+      <div class="work-item reveal" style="transition-delay:0.15s">
+        <div class="work-dot"></div>
+        <div class="work-name">Why Me Organization — Content Creator &amp; Graphic Designer</div>
+      </div>
+      <div class="work-item reveal" style="transition-delay:0.2s">
+        <div class="work-dot"></div>
+        <div class="work-name">International Rescue Committee (IRC)</div>
+      </div>
+      <div class="work-item reveal" style="transition-delay:0.25s">
+        <div class="work-dot"></div>
+        <div class="work-name">North African Policy Initiative (NAPI) — Project Evaluator</div>
+      </div>
+      <div class="work-item reveal" style="transition-delay:0.3s">
+        <div class="work-dot"></div>
+        <div class="work-name">United Nations Development Programme (UNDP)</div>
+      </div>
+      <div class="work-item reveal" style="transition-delay:0.35s">
+        <div class="work-dot"></div>
+        <div class="work-name">ARD Company — Web Developer</div>
+      </div>
+      <div class="work-item reveal" style="transition-delay:0.4s">
+        <div class="work-dot"></div>
+        <div class="work-name">Municipality of Bani Walid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & COMMUNITY -->
+<section id="education" aria-labelledby="education-heading">
+  <div class="container">
+    <p class="section-label reveal">Education</p>
+    <h2 id="education-heading" class="section-title reveal">Formal <em>Education</em></h2>
+    <div class="edu-stack">
+      <article class="edu-card reveal" style="transition-delay:0.05s">
+        <h3 class="edu-degree">Master&rsquo;s Degree in Electrical and Electronics Engineering</h3>
+        <p class="edu-focus">Image processing</p>
+        <p class="edu-institution">Pamukkale University</p>
+        <p class="edu-location">Denizli, Turkey</p>
+        <div class="edu-meta-row">
+          <span class="edu-years">2023 &mdash; 2026</span>
+          <span class="edu-gpa">GPA <span>3.82</span> / 4.00</span>
+        </div>
+      </article>
+      <article class="edu-card reveal" style="transition-delay:0.12s">
+        <h3 class="edu-degree">Master&rsquo;s Degree in Communication Engineering</h3>
+        <p class="edu-focus">Wireless Communications</p>
+        <p class="edu-institution">College of Electronic Technology</p>
+        <p class="edu-location">Bani Walid, Libya</p>
+        <div class="edu-meta-row">
+          <span class="edu-years">2022 &mdash; 2025</span>
+          <span class="edu-gpa">GPA <span>3.95</span> / 4.00</span>
+        </div>
+      </article>
+      <article class="edu-card reveal" style="transition-delay:0.2s">
+        <h3 class="edu-degree">Bachelor&rsquo;s Degree in Communication and Microwaves Engineering</h3>
+        <p class="edu-institution">College of Electronic Technology</p>
+        <p class="edu-location">Bani Walid, Libya</p>
+        <div class="edu-meta-row">
+          <span class="edu-years">2016 &mdash; 2021</span>
+          <span class="edu-gpa">GPA <span>85.67%</span></span>
+        </div>
+      </article>
+    </div>
+
+    <hr class="education-divider reveal" aria-hidden="true" />
+
+    <p class="section-label reveal">Community</p>
+    <h2 class="section-title reveal">Activities, Volunteering &amp; <em>Memberships</em></h2>
+    <div class="activity-grid">
+      <div class="activity-card reveal-left" style="transition-delay:0.05s">
+        <div class="activity-icon" aria-hidden="true"><i class="fas fa-users"></i></div>
+        <div class="activity-body">
+          <p class="activity-role">Member</p>
+          <p class="activity-name">African Students Association in Denizli (ASAD)</p>
+          <p class="activity-when">Since 2024</p>
+        </div>
+      </div>
+      <div class="activity-card reveal-right" style="transition-delay:0.1s">
+        <div class="activity-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
+        <div class="activity-body">
+          <p class="activity-role">Member</p>
+          <p class="activity-name">Y-PEER Network</p>
+          <p class="activity-when">Since 2021</p>
+        </div>
+      </div>
+      <div class="activity-card reveal-left" style="transition-delay:0.15s">
+        <div class="activity-icon" aria-hidden="true"><i class="fas fa-heart-pulse"></i></div>
+        <div class="activity-body">
+          <p class="activity-role">Volunteer</p>
+          <p class="activity-name">Libyan Red Crescent</p>
+          <p class="activity-when">Since 2020</p>
+        </div>
+      </div>
+      <div class="activity-card reveal-right" style="transition-delay:0.2s">
+        <div class="activity-icon" aria-hidden="true"><i class="fas fa-people-group"></i></div>
+        <div class="activity-body">
+          <p class="activity-role">Member</p>
+          <p class="activity-name">Community Partnership Organization</p>
+          <p class="activity-when">Since 2018</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE -->
+<section id="more">
+  <div class="container">
+    <p class="section-label reveal">More</p>
+    <h2 class="section-title reveal">Academic <em>Work</em></h2>
+    <div class="more-grid">
+      <p class="more-intro reveal">
+        My academic path is shaped by a steady interest in how theory meets practice. At present I am <strong>especially engaged with artificial intelligence research</strong>, following advances that connect machine learning with communications, signal and image processing, and dependable engineering systems. In parallel, I devote attention to <strong>web design</strong>—crafting interfaces that are clear, purposeful, and respectful of the people who use them. I <strong>keep pace with emerging ideas</strong> across journals, open-source communities, and design standards, so that teaching, collaboration, and personal projects all reflect contemporary methods rather than yesterday’s defaults. The theses listed below summarise formal degree research; what continues to motivate me is the blend of <em>rigorous inquiry</em>, intelligent tools, and well-built digital experiences.
+      </p>
+      <div class="more-block reveal-left">
+        <h3>Theses</h3>
+        <ul class="more-list">
+          <li>Design of a Digital Color Cabinet for Color and Pattern Analysis in the Textile Industry — <em>Pamukkale University</em></li>
+          <li>Optimization of Non-Orthogonal Multiple Access (NOMA) Systems — <em>College of Electronic Technology</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Get in <em>Touch</em></h2>
+        <div class="email-list">
+          <div class="email-item">
+            <span class="email-purpose">General Inquiries</span>
+            <a href="mailto:abdelbary.algamel@gmail.com" class="email-addr">abdelbary.algamel@gmail.com</a>
+          </div>
+          <div class="email-item">
+            <span class="email-purpose">University Correspondence</span>
+            <a href="mailto:aalgamel23@posta.pau.edu.tr" class="email-addr">aalgamel23@posta.pau.edu.tr</a>
+          </div>
+          <div class="email-item">
+            <span class="email-purpose">Work Correspondence</span>
+            <a href="mailto:abdelbary@partnership.org.ly" class="email-addr">abdelbary@partnership.org.ly</a>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/abdelbary-algamel-8b57bb19a/" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com/bary.algamel" target="_blank" rel="noopener" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/abdelbary.tk" target="_blank" rel="noopener" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/abdelbaryw" target="_blank" rel="noopener" class="social-link" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://scholar.google.com/citations?user=w22gIw4AAAAJ" target="_blank" rel="noopener" class="social-link" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="https://www.researchgate.net/profile/Abdelbary-Algamel" target="_blank" rel="noopener" class="social-link" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+          <a href="https://orcid.org/0009-0003-9914-1435" target="_blank" rel="noopener" class="social-link" title="ORCID"><i class="fab fa-orcid"></i></a>
+        </div>
+      </div>
+      <div class="contact-right reveal-right">
+        <div class="contact-form-card">
+          <div class="contact-form-head">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            <div class="contact-form-title">
+              Quick message
+              <span>Replies to abdelbary.algamel@gmail.com</span>
+            </div>
+          </div>
+          <form id="contact-form" class="contact-form" novalidate>
+            <input type="hidden" name="access_key" value="47f4ad2a-e29b-4172-b719-66531d1022a4" />
+            <input type="hidden" name="from_name" value="abdelbary.ly contact form" />
+            <input type="checkbox" name="botcheck" class="contact-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="subject" value="Portfolio contact — abdelbary.ly" />
+            <div class="contact-field">
+              <label for="contact-name">Name or phone</label>
+              <input id="contact-name" class="contact-input" type="text" name="name" required maxlength="120" placeholder="Your name or number" autocomplete="name" />
+            </div>
+            <div class="contact-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" class="contact-textarea" name="message" required maxlength="4000" rows="3" placeholder="Write your message…"></textarea>
+            </div>
+            <button type="submit" class="contact-submit">Send message</button>
+            <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <p class="contact-quote">
+          "Engineering is not just about solving problems —<br />
+          it is about <strong>asking the right questions</strong>."
+        </p>
+        <a href="https://www.abdelbary.ly" target="_blank" rel="noopener" class="contact-website">
+          <i class="fas fa-globe"></i>
+          www.abdelbary.ly
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACKNOWLEDGMENTS -->
+<div class="ack-wrap">
+  <div class="ack-inner">
+    <p class="ack-heading" id="ack-heading">Acknowledgments</p>
+    <div class="ack-viewport" role="region" aria-labelledby="ack-heading">
+      <div class="ack-marquee-inner">
+        <ul class="ack-list">
+          <li><div class="ack-tile"><img src="1.jpg" alt="College of Electronic Technology, Bani Walid — Libya" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="2.jpg" alt="YTB — Türkiye scholarships agency" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="3.jfif" alt="Libyan Authority for Scientific Research" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="4.png" alt="Türkiye Scholarships" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="5.png" alt="Institutional partner" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="6.png" alt="Community Partnership Organization" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="7.jpg" alt="Red Crescent Clinics — Ajdabiya" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="8.png" alt="Pamukkale University — Denizli, Turkey" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+        </ul>
+        <ul class="ack-list" aria-hidden="true">
+          <li><div class="ack-tile"><img src="1.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="2.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="3.jfif" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="4.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="5.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="6.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="7.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="8.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Abdelbary Algamel. All rights reserved.</span>
+  <span class="footer-logo">A · Algamel</span>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  let mx = 0, my = 0, fx = 0, fy = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    fx += (mx - fx) * 0.12;
+    fy += (my - fy) * 0.12;
+    follower.style.left = fx + 'px';
+    follower.style.top = fy + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { follower.style.transform = 'translate(-50%,-50%) scale(1.8)'; follower.style.opacity = '0.3'; });
+    el.addEventListener('mouseleave', () => { follower.style.transform = 'translate(-50%,-50%) scale(1)'; follower.style.opacity = '0.6'; });
+  });
+
+  // NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // REVEAL ON SCROLL
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.style.transitionDelay || '0s';
+        setTimeout(() => entry.target.classList.add('visible'), parseFloat(delay) * 1000);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Work flip cards — tap to toggle when hover is unavailable (phones, tablets)
+  const coarsePointer = window.matchMedia('(hover: none)');
+  const workFlips = document.querySelectorAll('.work-flip');
+  function bindWorkFlipTap() {
+    workFlips.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        if (!coarsePointer.matches) return;
+        card.classList.toggle('is-flipped');
+      });
+    });
+  }
+  bindWorkFlipTap();
+  coarsePointer.addEventListener('change', () => {
+    workFlips.forEach((c) => c.classList.remove('is-flipped'));
+  });
+
+  // CONTACT FORM — Web3Forms
+  const contactForm = document.getElementById('contact-form');
+  const contactStatus = document.getElementById('contact-form-status');
+  if (contactForm && contactStatus) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = contactForm.querySelector('.contact-submit');
+      contactStatus.textContent = '';
+      contactStatus.classList.remove('is-error', 'is-success');
+      const fd = new FormData(contactForm);
+      const payload = Object.fromEntries(fd.entries());
+      if (payload.botcheck) {
+        contactStatus.classList.add('is-error');
+        contactStatus.textContent = 'Something went wrong. Please try again.';
+        return;
+      }
+      delete payload.botcheck;
+      payload.subject = 'Portfolio contact — abdelbary.ly';
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.success) {
+          contactStatus.classList.add('is-success');
+          contactStatus.textContent = 'Thank you — your message was sent.';
+          contactForm.reset();
+        } else {
+          contactStatus.classList.add('is-error');
+          contactStatus.textContent = data.message || 'Could not send. Please use email below.';
+        }
+      } catch (err) {
+        contactStatus.classList.add('is-error');
+        contactStatus.textContent = 'Network error. Please email directly.';
+      }
+      btn.disabled = false;
+    });
+  }
+
+  // SMOOTH NAV
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+</script>
+</body>
+</html>
