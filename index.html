@@ -206,6 +206,11 @@
     visibility: visible;
     transform: translateY(0) scale(1);
   }
+  .lang-switch__flag {
+    font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
   .lang-switch__opt {
     display: flex;
     align-items: center;
@@ -312,26 +317,28 @@
   .hero-glass-frame {
     position: absolute;
     z-index: 2;
-    inset: clamp(8px, 1.6vmin, 20px);
-    border-radius: clamp(6px, 1vw, 16px);
+    inset: clamp(10px, 1.8vmin, 22px);
+    border-radius: clamp(8px, 1.2vw, 18px);
     pointer-events: none;
     box-sizing: border-box;
-    padding: clamp(5px, 0.85vmin, 11px);
+    padding: clamp(6px, 1vmin, 12px);
     background: linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.08) 38%,
-      rgba(125, 211, 252, 0.18) 72%,
-      rgba(255, 255, 255, 0.16) 100%
+      rgba(255, 255, 255, 0.32) 0%,
+      rgba(186, 230, 253, 0.25) 25%,
+      rgba(147, 197, 253, 0.2) 50%,
+      rgba(125, 211, 252, 0.22) 75%,
+      rgba(255, 255, 255, 0.18) 100%
     );
     background-size: 200% 200%;
-    backdrop-filter: blur(16px) saturate(170%);
-    -webkit-backdrop-filter: blur(16px) saturate(170%);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.55),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-      0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 18px 50px rgba(0, 0, 0, 0.28);
+      inset 0 2px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(255, 255, 255, 0.12),
+      0 8px 32px rgba(37, 99, 235, 0.15),
+      0 20px 56px rgba(0, 0, 0, 0.25);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
@@ -636,19 +643,22 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 3px;
-    border-radius: 28px;
+    padding: 6px;
+    border-radius: 32px;
     background: linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(186, 230, 253, 0.85) 35%,
-      rgba(96, 165, 250, 0.55) 70%,
-      rgba(125, 211, 252, 0.75) 100%
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(186, 230, 253, 0.95) 25%,
+      rgba(147, 197, 253, 0.9) 50%,
+      rgba(96, 165, 250, 0.85) 75%,
+      rgba(125, 211, 252, 0.9) 100%
     );
     box-shadow:
-      0 4px 24px rgba(37, 99, 235, 0.12),
-      0 24px 56px rgba(15, 23, 42, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      0 8px 32px rgba(37, 99, 235, 0.15),
+      0 28px 64px rgba(15, 23, 42, 0.12),
+      0 4px 16px rgba(56, 189, 248, 0.2),
+      inset 0 2px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(186, 230, 253, 0.7);
   }
   .about-photo-frame {
     position: relative;
@@ -656,32 +666,43 @@
     max-height: min(72vh, 520px);
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    border-radius: 25px;
-    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+    border-radius: 28px;
+    background: linear-gradient(180deg, #dbeafe 0%, #f0f9ff 100%);
+    box-shadow: 
+      0 8px 24px rgba(15, 23, 42, 0.08),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   }
   .about-photo-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 18%;
+    object-position: center top;
     display: block;
-    transform: scale(1.02);
-    transition: transform 0.5s ease, filter 0.4s ease;
-    filter: saturate(1.05) contrast(1.02);
+    transform: scale(1);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+    filter: saturate(1.08) contrast(1.03) brightness(1.02);
   }
   .about-photo-frame:hover img {
-    transform: scale(1.06);
-    filter: saturate(1.1) contrast(1.04);
+    transform: scale(1.08);
+    filter: saturate(1.15) contrast(1.05) brightness(1.03);
   }
   .about-photo-frame::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 25px;
+    border-radius: 28px;
     pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(15, 23, 42, 0.03) 100%
+    );
     box-shadow:
       inset 0 0 0 1px rgba(255, 255, 255, 0.5),
-      inset 0 -20px 40px rgba(15, 23, 42, 0.06);
+      inset 0 1px 2px rgba(255, 255, 255, 0.6),
+      inset 0 -24px 48px rgba(15, 23, 42, 0.05);
   }
   .about-deco {
     position: absolute;
@@ -1210,7 +1231,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem; font-weight: 400;
     color: var(--brown);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.8rem;
     padding: 0.85rem 1.1rem;
     border-radius: 14px;
     border: 1px solid var(--glass-border);
@@ -1219,11 +1240,28 @@
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-glass);
   }
-  .more-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .more-list { 
+    list-style: none; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0; 
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid transparent;
+    background: 
+      linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(56, 189, 248, 0.3) 20%, 
+        rgba(96, 165, 250, 0.5) 50%, 
+        rgba(56, 189, 248, 0.3) 80%, 
+        transparent 100%) 
+      bottom / 100% 1px no-repeat;
+  }
   .more-list li {
     font-size: 0.84rem; color: var(--text-muted);
-    padding-inline-start: 1rem;
+    padding: 1.2rem 0 1.2rem 1rem;
     border-inline-start: 2px solid var(--gold-light);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
     line-height: 1.55;
     letter-spacing: 0.006em;
     word-spacing: 0.03em;
@@ -1236,7 +1274,13 @@
     overflow-wrap: normal;
     transition: border-color 0.3s;
   }
-  .more-list li:hover { border-color: var(--gold); color: var(--brown); }
+  .more-list li:hover { 
+    border-inline-start-color: var(--gold); 
+    color: var(--brown); 
+  }
+  .more-list li:last-child { 
+    border-bottom: none; 
+  }
 
   /* CONTACT */
   #contact {
@@ -1507,11 +1551,18 @@
   .ack-marquee-inner {
     display: flex;
     width: max-content;
-    animation: ackMarquee 38s linear infinite;
+    animation: ackMarquee 60s linear infinite;
   }
   @keyframes ackMarquee {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to { transform: translateX(-33.333%); }
+  }
+  [dir="rtl"] .ack-marquee-inner {
+    animation: ackMarqueeRTL 60s linear infinite;
+  }
+  @keyframes ackMarqueeRTL {
+    from { transform: translateX(0); }
+    to { transform: translateX(33.333%); }
   }
   .ack-list {
     display: flex;
@@ -1654,15 +1705,31 @@
     .work-list { grid-template-columns: 1fr; }
     .activity-grid { grid-template-columns: 1fr; }
     .about-visual {
-      max-width: 300px;
+      max-width: 320px;
       padding: 1.5rem 0 0;
       text-align: center;
+      margin: 0 auto;
     }
     .about-deco {
       left: 0.35rem;
       top: 0.35rem;
       width: 5rem;
       height: 5rem;
+    }
+    
+    /* تحسين عرض الصورة على الموبايل */
+    .about-photo-frame {
+      max-height: min(65vh, 480px);
+      aspect-ratio: 3 / 4;
+    }
+    
+    .about-photo-frame img {
+      object-position: center top;
+      transform: scale(0.98);
+    }
+    
+    .about-photo-frame:hover img {
+      transform: scale(1.02);
     }
     .about-stat {
       position: static;
@@ -1704,6 +1771,58 @@
     [dir="rtl"] .more-list li {
       text-align: right;
       text-align-last: start;
+    }
+    
+    /* تحسين إضافي للصورة على الموبايل الصغير */
+    .about-visual {
+      max-width: 280px;
+    }
+    
+    .about-photo-frame {
+      max-height: min(60vh, 420px);
+      aspect-ratio: 3 / 4;
+    }
+    
+    .about-photo-frame img {
+      object-position: center 5%;
+      transform: scale(0.96);
+    }
+    
+    /* تحسينات الفيديو للموبايل */
+    .hero-video-shell {
+      height: calc(100vh - var(--nav-offset));
+      height: calc(100dvh - var(--nav-offset));
+      min-height: 400px;
+      max-height: 600px;
+    }
+    
+    .hero-video {
+      object-fit: cover;
+      object-position: center center;
+    }
+    
+    /* تحسين الإطار للموبايل */
+    .hero-glass-frame {
+      inset: 12px;
+      border-radius: 12px;
+      padding: 8px;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(186, 230, 253, 0.12) 50%,
+        rgba(147, 197, 253, 0.1) 100%
+      );
+      box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    
+    .hero-glass-frame::before {
+      border-radius: 8px;
+      border-width: 2px;
+      box-shadow:
+        0 4px 16px rgba(37, 99, 235, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
   }
 
@@ -1767,6 +1886,7 @@
   [dir="rtl"] .more-list li {
     text-align: right;
     text-align-last: start;
+    padding-inline-start: 1.5rem;
   }
   [dir="rtl"] .research-arrow .fa-arrow-right {
     transform: scaleX(-1);
@@ -1776,6 +1896,481 @@
   }
   [dir="rtl"] .lang-switch__meta {
     align-items: flex-end;
+  }
+
+  /* CV REQUEST CHATBOT */
+  .cv-chat-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+    z-index: 999;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  /* سهم ونص التوجيه */
+  .cv-chat-hint {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 998;
+    animation: cvHintFloat 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  .cv-chat-hint-text {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.95));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.65rem 1.1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    box-shadow: 
+      0 8px 24px rgba(15, 23, 42, 0.12),
+      0 4px 12px rgba(37, 99, 235, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(186, 230, 253, 0.6);
+    white-space: nowrap;
+  }
+  
+  .cv-chat-hint-arrow {
+    font-size: 1.5rem;
+    color: var(--accent);
+    filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.3));
+  }
+  
+  @keyframes cvHintFloat {
+    0%, 100% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(-8px) translateY(-4px);
+    }
+  }
+  
+  .cv-chat-hint.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .cv-chat-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--accent-light) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cv-chat-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.45);
+  }
+
+  .cv-chat-btn:hover::before {
+    opacity: 1;
+  }
+
+  .cv-chat-btn-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 28px;
+    color: white;
+    animation: cvPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes cvPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .cv-chat-panel {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 380px;
+    max-height: 520px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 20px;
+    box-shadow: 0 12px 48px rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    z-index: 998;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+  }
+
+  .cv-chat-panel.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+  }
+
+  .cv-chat-header {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .cv-chat-header-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .cv-chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    animation: cvAvatarPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes cvAvatarPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+  }
+
+  .cv-chat-title {
+    color: white;
+  }
+
+  .cv-chat-title h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+
+  .cv-chat-title p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+
+  .cv-chat-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  .cv-chat-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+  }
+
+  .cv-chat-body {
+    padding: 1.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .cv-chat-message {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(56, 189, 248, 0.08));
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+  }
+
+  .cv-chat-message p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--charcoal);
+  }
+
+  .cv-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .cv-form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+
+  .cv-form-input,
+  .cv-form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid rgba(37, 99, 235, 0.2);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    color: var(--charcoal);
+  }
+
+  .cv-form-input:focus,
+  .cv-form-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .cv-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .cv-submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cv-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .cv-submit-btn:hover::before {
+    left: 100%;
+  }
+
+  .cv-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  }
+
+  .cv-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  #cv-form-status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+  }
+
+  #cv-form-status.is-success {
+    display: block;
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  #cv-form-status.is-error {
+    display: block;
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .cv-chat-btn {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 56px;
+      height: 56px;
+    }
+
+    .cv-chat-btn-icon {
+      font-size: 24px;
+    }
+
+    .cv-chat-panel {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      left: 1.5rem;
+      width: auto;
+    }
+    
+    .cv-chat-hint {
+      bottom: 1.8rem;
+      right: 5.5rem;
+      gap: 0.5rem;
+    }
+    
+    .cv-chat-hint-text {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.85rem;
+    }
+    
+    .cv-chat-hint-arrow {
+      font-size: 1.2rem;
+    }
+    
+    /* تحسينات الفيديو للتابلت */
+    .hero-video-shell {
+      min-height: 450px;
+      max-height: 650px;
+    }
+    
+    .hero-glass-frame {
+      inset: 14px;
+      border-radius: 14px;
+      padding: 9px;
+    }
+  }
+
+  [dir="rtl"] .cv-chat-btn {
+    right: auto;
+    left: 2rem;
+  }
+
+  [dir="rtl"] .cv-chat-panel {
+    right: auto;
+    left: 2rem;
+  }
+
+  [dir="rtl"] .cv-chat-message {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .cv-chat-hint {
+    right: auto;
+    left: 7rem;
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .cv-chat-hint-arrow {
+    transform: scaleX(-1);
+  }
+  
+  @keyframes cvHintFloatRTL {
+    0%, 100% {
+      transform: translateX(0) translateY(0) scaleX(-1);
+    }
+    50% {
+      transform: translateX(8px) translateY(-4px) scaleX(-1);
+    }
+  }
+  
+  [dir="rtl"] .cv-chat-hint {
+    animation: cvHintFloatRTL 3s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    [dir="rtl"] .cv-chat-btn {
+      left: 1.5rem;
+    }
+
+    [dir="rtl"] .cv-chat-panel {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    [dir="rtl"] .cv-chat-hint {
+      left: 5.5rem;
+    }
+  }
+  
+  /* تحسينات إضافية للشاشات الصغيرة جداً */
+  @media (max-width: 480px) {
+    .hero-video-shell {
+      min-height: 350px;
+      max-height: 500px;
+    }
+    
+    .hero-glass-frame {
+      inset: 10px;
+      border-radius: 10px;
+      padding: 6px;
+    }
+    
+    .hero-glass-frame::before {
+      border-radius: 6px;
+      border-width: 1.5px;
+    }
+    
+    .cv-chat-hint {
+      bottom: 1.5rem;
+      right: 4.5rem;
+      gap: 0.4rem;
+    }
+    
+    .cv-chat-hint-text {
+      font-size: 0.75rem;
+      padding: 0.45rem 0.75rem;
+    }
+    
+    .cv-chat-hint-arrow {
+      font-size: 1rem;
+    }
+    
+    [dir="rtl"] .cv-chat-hint {
+      left: 4.5rem;
+    }
+  }
+  
+  /* تحسين للشاشات الأفقية على الموبايل */
+  @media (max-width: 900px) and (max-height: 500px) {
+    .hero-video-shell {
+      height: calc(100vh - var(--nav-offset));
+      min-height: 280px;
+      max-height: none;
+    }
+    
+    .hero-video {
+      object-fit: cover;
+    }
+    
+    .hero-glass-frame {
+      inset: 8px;
+      border-radius: 8px;
+      padding: 5px;
+    }
   }
 </style>
 </head>
@@ -1936,7 +2531,7 @@
         <div class="about-deco" aria-hidden="true"></div>
         <div class="about-photo-shell">
           <div class="about-photo-frame">
-            <img src="bary.png" alt="Abdelbary Algamel" loading="lazy" decoding="async" data-i18n-alt="logo_alt" />
+            <img src="bary1.jfif" alt="Abdelbary Algamel" loading="lazy" decoding="async" data-i18n-alt="logo_alt" />
           </div>
           <div class="about-stat">
             <div class="num">3.95</div>
@@ -2122,17 +2717,17 @@
     <p class="section-label reveal" data-i18n="sec_more">More</p>
     <h2 class="section-title reveal"><span data-i18n="more_h2_1">Academic </span><em data-i18n="more_h2_2">Work</em></h2>
     <div class="more-grid">
-      <div class="more-intro-panel reveal" id="more-intro-wrap">
-        <p class="more-intro" data-i18n-html="more_intro">
-          My academic path is shaped by a steady interest in how theory meets practice. At present I am <strong>especially engaged with artificial intelligence research</strong>, following advances that connect machine learning with communications, signal and image processing, and dependable engineering systems. In parallel, I devote attention to <strong>web design</strong>, crafting interfaces that are clear, purposeful, and respectful of the people who use them. I <strong>keep pace with emerging ideas</strong> across journals, open-source communities, and design standards, so that teaching, collaboration, and personal projects all reflect contemporary methods rather than yesterday&rsquo;s defaults. The theses listed below summarise formal degree research; what continues to motivate me is the blend of <em>rigorous inquiry</em>, intelligent tools, and well-built digital experiences.
-        </p>
-      </div>
       <div class="more-block reveal-left" id="more-block-wrap">
         <h3 data-i18n="more_theses_title">Theses</h3>
         <ul class="more-list">
           <li data-i18n-html="more_thesis_1">Design of a Digital Color Cabinet for Color and Pattern Analysis in the Textile Industry, <em>Pamukkale University</em></li>
           <li data-i18n-html="more_thesis_2">Optimization of Non-Orthogonal Multiple Access (NOMA) Systems, <em>College of Electronic Technology</em></li>
         </ul>
+        <div class="more-intro-panel" id="more-intro-wrap">
+          <p class="more-intro" data-i18n-html="more_intro">
+            My academic path is shaped by a steady interest in how theory meets practice. At present I am <strong>especially engaged with artificial intelligence research</strong>, following advances that connect machine learning with communications, signal and image processing, and dependable engineering systems. In parallel, I devote attention to <strong>web design</strong>, crafting interfaces that are clear, purposeful, and respectful of the people who use them. I <strong>keep pace with emerging ideas</strong> across journals, open-source communities, and design standards, so that teaching, collaboration, and personal projects all reflect contemporary methods rather than yesterday&rsquo;s defaults. The theses listed below summarise formal degree research; what continues to motivate me is the blend of <em>rigorous inquiry</em>, intelligent tools, and well-built digital experiences.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -2230,6 +2825,16 @@
           <li><div class="ack-tile"><img src="7.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
           <li><div class="ack-tile"><img src="8.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
         </ul>
+        <ul class="ack-list" aria-hidden="true">
+          <li><div class="ack-tile"><img src="1.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="2.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="3.jfif" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="4.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="5.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="6.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="7.jpg" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+          <li><div class="ack-tile"><img src="8.png" alt="" loading="lazy" decoding="async" width="136" height="76" /></div></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -2305,6 +2910,77 @@
     </div>
   </div>
 </footer>
+
+<!-- CV REQUEST CHATBOT -->
+<button id="cv-chat-btn" class="cv-chat-btn" aria-label="Request Detailed CV" data-i18n-aria="cv_btn_aria">
+  <i class="fas fa-file-download cv-chat-btn-icon"></i>
+</button>
+
+<!-- سهم التوجيه للسي في -->
+<div id="cv-chat-hint" class="cv-chat-hint">
+  <div class="cv-chat-hint-text" data-i18n="cv_hint_text">Request Detailed CV</div>
+  <div class="cv-chat-hint-arrow">→</div>
+</div>
+
+<div id="cv-chat-panel" class="cv-chat-panel">
+  <div class="cv-chat-header">
+    <div class="cv-chat-header-content">
+      <div class="cv-chat-avatar">
+        <i class="fas fa-user-tie"></i>
+      </div>
+      <div class="cv-chat-title">
+        <h3 data-i18n="cv_chat_title">طلب السيرة الذاتية</h3>
+        <p data-i18n="cv_chat_subtitle">نحن هنا لمساعدتك</p>
+      </div>
+    </div>
+    <button id="cv-chat-close" class="cv-chat-close" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="cv-chat-body">
+    <div class="cv-chat-message">
+      <p data-i18n="cv_chat_message">مرحباً! يسعدني أن أرسل لك سيرتي الذاتية الكاملة والمفصلة. يرجى ملء المعلومات التالية وسأرسلها لك في أقرب وقت.</p>
+    </div>
+
+    <form id="cv-request-form">
+      <input type="hidden" name="access_key" value="47f4ad2a-e29b-4172-b719-66531d1022a4">
+      <input type="checkbox" name="botcheck" style="display: none;">
+
+      <div class="cv-form-group">
+        <label class="cv-form-label" for="cv-email" data-i18n="cv_email_label">البريد الإلكتروني</label>
+        <input 
+          type="email" 
+          id="cv-email" 
+          name="email" 
+          class="cv-form-input" 
+          required
+          data-i18n-placeholder="cv_email_placeholder"
+          placeholder="example@email.com"
+        />
+      </div>
+
+      <div class="cv-form-group">
+        <label class="cv-form-label" for="cv-purpose" data-i18n="cv_purpose_label">سبب الطلب والجهة</label>
+        <textarea 
+          id="cv-purpose" 
+          name="purpose" 
+          class="cv-form-textarea" 
+          required
+          data-i18n-placeholder="cv_purpose_placeholder"
+          placeholder="مثال: طلب توظيف في شركة ABC، أو فرصة تعاون في مشروع..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="cv-submit-btn" data-i18n="cv_request_btn">
+        <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
+        طلب السيرة الذاتية
+      </button>
+
+      <div id="cv-form-status"></div>
+    </form>
+  </div>
+</div>
 
 <script>
   // CURSOR
@@ -2471,6 +3147,18 @@
       form_ok: 'Thank you \u2014 your message was sent.',
       form_err_send: 'Could not send. Please use email below.',
       form_err_net: 'Network error. Please email directly.',
+      form_sending: 'Sending...',
+      cv_btn_aria: 'Request Detailed CV',
+      cv_hint_text: 'Request Detailed CV',
+      cv_chat_title: 'Get My Detailed CV',
+      cv_chat_subtitle: 'Let\u2019s connect professionally',
+      cv_chat_message: 'Hi there! I\u2019d love to share my comprehensive CV with you. Just drop your details below and I\u2019ll send it your way shortly.',
+      cv_email_label: 'Your Email',
+      cv_email_placeholder: 'you@company.com',
+      cv_purpose_label: 'Tell me about your opportunity',
+      cv_purpose_placeholder: 'e.g., Job opening at your company, collaboration proposal, research opportunity...',
+      cv_request_btn: 'Send Me the CV',
+      cv_form_ok: 'Thank you! Your request has been received successfully. The detailed CV is not sent automatically. Your request will be reviewed, and the CV will be sent accordingly. We appreciate your understanding.',
       ack_title: 'Acknowledgments',
       ack_alt_1: 'College of Electronic Technology, Bani Walid \u2014 Libya',
       ack_alt_2: 'YTB \u2014 T\u00fcrkiye scholarships agency',
@@ -2588,6 +3276,18 @@
       form_ok: 'Merci \u2014 votre message a bien \u00e9t\u00e9 envoy\u00e9.',
       form_err_send: 'Envoi impossible. Veuillez utiliser l\u2019e-mail ci-dessous.',
       form_err_net: 'Erreur r\u00e9seau. Veuillez \u00e9crire directement par e-mail.',
+      form_sending: 'Envoi en cours...',
+      cv_btn_aria: 'Demander le CV détaillé',
+      cv_hint_text: 'Demandez le CV détaillé',
+      cv_chat_title: 'Obtenez mon CV détaillé',
+      cv_chat_subtitle: 'Connectons-nous professionnellement',
+      cv_chat_message: 'Bonjour ! Je serais ravi de partager mon CV complet avec vous. Laissez simplement vos coordonn\u00e9es ci-dessous et je vous l\u2019enverrai rapidement.',
+      cv_email_label: 'Votre e-mail',
+      cv_email_placeholder: 'vous@entreprise.com',
+      cv_purpose_label: 'Parlez-moi de votre opportunit\u00e9',
+      cv_purpose_placeholder: 'Ex : Offre d\u2019emploi dans votre entreprise, proposition de collaboration, opportunit\u00e9 de recherche...',
+      cv_request_btn: 'Envoyez-moi le CV',
+      cv_form_ok: 'Merci ! Votre demande a été reçue avec succès. Le CV détaillé n'est pas envoyé automatiquement. Votre demande sera examinée et le CV sera envoyé en conséquence. Nous vous remercions de votre compréhension.',
       ack_title: 'Remerciements',
       ack_alt_1: 'Coll\u00e8ge de technologie \u00e9lectronique, Bani Walid \u2014 Libye',
       ack_alt_2: 'YTB \u2014 agence des bourses Turquie',
@@ -2705,6 +3405,18 @@
       form_ok: 'Te\u015fekk\u00fcrler \u2014 mesaj\u0131n\u0131z g\u00f6nderildi.',
       form_err_send: 'G\u00f6nderilemedi. L\u00fctfen a\u015fa\u011f\u0131daki e-postay\u0131 kullan\u0131n.',
       form_err_net: 'A\u011f hatas\u0131. L\u00fctfen do\u011frudan e-posta g\u00f6nderin.',
+      form_sending: 'Gönderiliyor...',
+      cv_btn_aria: 'Detaylı özgeçmiş talep et',
+      cv_hint_text: 'Detaylı özgeçmiş talep edin',
+      cv_chat_title: 'Detaylı Özgeçmişimi Edinin',
+      cv_chat_subtitle: 'Profesyonel olarak ba\u011flanal\u0131m',
+      cv_chat_message: 'Merhaba! Kapsaml\u0131 \u00f6zge\u00e7mi\u015fimi sizinle payla\u015fmak isterim. Sadece bilgilerinizi b\u0131rak\u0131n, k\u0131sa s\u00fcrede size g\u00f6ndereyim.',
+      cv_email_label: 'E-posta Adresiniz',
+      cv_email_placeholder: 'siz@sirket.com',
+      cv_purpose_label: 'F\u0131rsat\u0131n\u0131zdan bahsedin',
+      cv_purpose_placeholder: '\u00d6rn: \u015eirketinizdeki i\u015f f\u0131rsat\u0131, i\u015fbirli\u011fi teklifi, ara\u015ft\u0131rma f\u0131rsat\u0131...',
+      cv_request_btn: 'Özgeçmişi Bana Gönder',
+      cv_form_ok: 'Teşekkür ederiz! Talebiniz başarıyla alındı. Detaylı özgeçmiş otomatik olarak gönderilmemektedir. Talebiniz incelenecek ve buna göre özgeçmiş gönderilecektir. Anlayışınız için teşekkür ederiz.',
       ack_title: 'Te\u015fekk\u00fcrler',
       ack_alt_1: 'Elektronik teknolojisi y\u00fcksekokulu, Bani Walid \u2014 Libya',
       ack_alt_2: 'YTB \u2014 T\u00fcrkiye burslar\u0131 kurumu',
@@ -2822,6 +3534,18 @@
       form_ok: '\u0421\u043f\u0430\u0441\u0438\u0431\u043e \u2014 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e.',
       form_err_send: '\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c. \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 e-mail \u043d\u0438\u0436\u0435.',
       form_err_net: '\u041e\u0448\u0438\u0431\u043a\u0430 \u0441\u0435\u0442\u0438. \u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043d\u0430 \u043f\u043e\u0447\u0442\u0443 \u043d\u0430\u043f\u0440\u044f\u043c\u0443\u044e.',
+      form_sending: 'Отправка...',
+      cv_btn_aria: 'Запросить подробное резюме',
+      cv_hint_text: 'Запросите подробное резюме',
+      cv_chat_title: 'Получите моё подробное резюме',
+      cv_chat_subtitle: '\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0441\u0432\u044f\u0436\u0435\u043c\u0441\u044f \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e',
+      cv_chat_message: '\u041f\u0440\u0438\u0432\u0435\u0442! \u042f \u0441 \u0443\u0434\u043e\u0432\u043e\u043b\u044c\u0441\u0442\u0432\u0438\u0435\u043c \u043f\u043e\u0434\u0435\u043b\u044e\u0441\u044c \u0441 \u0432\u0430\u043c\u0438 \u0441\u0432\u043e\u0438\u043c \u043f\u043e\u043b\u043d\u044b\u043c \u0440\u0435\u0437\u044e\u043c\u0435. \u041f\u0440\u043e\u0441\u0442\u043e \u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0441\u0432\u043e\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u043d\u0438\u0436\u0435, \u0438 \u044f \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044e \u0435\u0433\u043e \u0432 \u0431\u043b\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f.',
+      cv_email_label: '\u0412\u0430\u0448 e-mail',
+      cv_email_placeholder: 'vy@kompaniya.ru',
+      cv_purpose_label: '\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 \u043e \u0432\u0430\u0448\u0435\u0439 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438',
+      cv_purpose_placeholder: '\u041d\u0430\u043f\u0440.: \u0412\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u0432 \u0432\u0430\u0448\u0435\u0439 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438, \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0435, \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c...',
+      cv_request_btn: 'Отправьте мне резюме',
+      cv_form_ok: 'Спасибо! Ваш запрос успешно получен. Подробное резюме не отправляется автоматически. Ваш запрос будет рассмотрен, и резюме будет отправлено соответственно. Благодарим за понимание.',
       ack_title: '\u0411\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u043d\u043e\u0441\u0442\u0438',
       ack_alt_1: '\u041a\u043e\u043b\u043b\u0435\u0434\u0436 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0439, \u0411\u0430\u043d\u0438-\u0412\u0430\u043b\u0438\u0434 \u2014 \u041b\u0438\u0432\u0438\u044f',
       ack_alt_2: 'YTB \u2014 \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0441\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0439 T\u00fcrkiye',
@@ -2939,6 +3663,18 @@
       form_ok: 'Vielen Dank \u2014 Ihre Nachricht wurde gesendet.',
       form_err_send: 'Senden nicht m\u00f6glich. Bitte nutzen Sie die E-Mail unten.',
       form_err_net: 'Netzwerkfehler. Bitte schreiben Sie direkt per E-Mail.',
+      form_sending: 'Wird gesendet...',
+      cv_btn_aria: 'Detaillierten Lebenslauf anfordern',
+      cv_hint_text: 'Fordern Sie den detaillierten Lebenslauf an',
+      cv_chat_title: 'Holen Sie sich meinen detaillierten Lebenslauf',
+      cv_chat_subtitle: 'Lassen Sie uns professionell verbinden',
+      cv_chat_message: 'Hallo! Ich w\u00fcrde gerne meinen umfassenden Lebenslauf mit Ihnen teilen. Hinterlassen Sie einfach Ihre Daten und ich sende ihn Ihnen in K\u00fcrze zu.',
+      cv_email_label: 'Ihre E-Mail',
+      cv_email_placeholder: 'sie@firma.de',
+      cv_purpose_label: 'Erz\u00e4hlen Sie mir von Ihrer M\u00f6glichkeit',
+      cv_purpose_placeholder: 'z.B.: Stellenangebot in Ihrem Unternehmen, Kooperationsvorschlag, Forschungsm\u00f6glichkeit...',
+      cv_request_btn: 'Senden Sie mir den Lebenslauf',
+      cv_form_ok: 'Vielen Dank! Ihre Anfrage wurde erfolgreich empfangen. Der detaillierte Lebenslauf wird nicht automatisch versendet. Ihre Anfrage wird geprüft und der Lebenslauf wird entsprechend versendet. Wir danken für Ihr Verständnis.',
       ack_title: 'Danksagungen',
       ack_alt_1: 'Hochschule f\u00fcr Elektroniktechnik, Bani Walid \u2014 Libyen',
       ack_alt_2: 'YTB \u2014 Stipendienagentur T\u00fcrkiye',
@@ -3056,6 +3792,18 @@
       form_ok: 'Gracias \u2014 tu mensaje se ha enviado.',
       form_err_send: 'No se pudo enviar. Usa el correo electr\u00f3nico de abajo.',
       form_err_net: 'Error de red. Escribe directamente por correo electr\u00f3nico.',
+      form_sending: 'Enviando...',
+      cv_btn_aria: 'Solicitar CV detallado',
+      cv_hint_text: 'Solicita el CV detallado',
+      cv_chat_title: 'Obtén mi CV detallado',
+      cv_chat_subtitle: 'Conectemos profesionalmente',
+      cv_chat_message: '\u00a1Hola! Me encantar\u00eda compartir mi CV completo contigo. Solo deja tus datos abajo y te lo enviar\u00e9 en breve.',
+      cv_email_label: 'Tu correo',
+      cv_email_placeholder: 'tu@empresa.com',
+      cv_purpose_label: 'Cu\u00e9ntame sobre tu oportunidad',
+      cv_purpose_placeholder: 'Ej.: Oferta de trabajo en tu empresa, propuesta de colaboraci\u00f3n, oportunidad de investigaci\u00f3n...',
+      cv_request_btn: 'Envíame el CV',
+      cv_form_ok: '¡Gracias! Tu solicitud ha sido recibida con éxito. El CV detallado no se envía automáticamente. Tu solicitud será revisada y el CV se enviará en consecuencia. Agradecemos tu comprensión.',
       ack_title: 'Agradecimientos',
       ack_alt_1: 'Colegio de Tecnolog\u00eda Electr\u00f3nica, Bani Walid \u2014 Libia',
       ack_alt_2: 'YTB \u2014 agencia de becas de T\u00fcrkiye',
@@ -3173,6 +3921,18 @@
       form_ok: 'Grazie \u2014 il tuo messaggio \u00e8 stato inviato.',
       form_err_send: 'Impossibile inviare. Usa l\u2019e-mail qui sotto.',
       form_err_net: 'Errore di rete. Scrivi direttamente via e-mail.',
+      form_sending: 'Invio in corso...',
+      cv_btn_aria: 'Richiedi CV dettagliato',
+      cv_hint_text: 'Richiedi il CV dettagliato',
+      cv_chat_title: 'Richiedi CV',
+      cv_chat_subtitle: 'Siamo qui per aiutarti',
+      cv_chat_message: 'Ciao! Sarei felice di inviarti il mio CV completo e dettagliato. Per favore compila le seguenti informazioni e te lo invierò al pi\u00f9 presto.',
+      cv_email_label: 'Indirizzo e-mail',
+      cv_email_placeholder: 'esempio@email.com',
+      cv_purpose_label: 'Scopo e organizzazione',
+      cv_purpose_placeholder: 'Esempio: Candidatura presso l\u2019azienda ABC o opportunit\u00e0 di collaborazione su un progetto...',
+      cv_request_btn: 'Richiedi CV',
+      cv_form_ok: 'Grazie! La tua richiesta è stata ricevuta con successo. Il CV dettagliato non viene inviato automaticamente. La tua richiesta sarà esaminata e il CV verrà inviato di conseguenza. Ti ringraziamo per la comprensione.',
       ack_title: 'Ringraziamenti',
       ack_alt_1: 'Istituto di tecnologie elettroniche, Bani Walid \u2014 Libia',
       ack_alt_2: 'YTB \u2014 agenzia delle borse di studio T\u00fcrkiye',
@@ -3195,64 +3955,64 @@
       nav_contact: '\u062a\u0648\u0627\u0635\u0644',
       hero_aria: '\u0641\u064a\u062f\u064a\u0648 \u0645\u0645\u064a\u0632',
       hero_eyebrow: '\u0645\u0647\u0646\u062f\u0633 \u0648\u0628\u0627\u062d\u062b \u2014 \u0644\u064a\u0628\u064a\u0627 \u00b7 \u062a\u0631\u0643\u064a\u0627',
-      hero_subtitle: '\u0647\u0646\u062f\u0633\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a (Communications Engineering) \u00b7 \u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0625\u0634\u0627\u0631\u0627\u062a (Signal Processing) \u00b7 \u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0635\u0648\u0631 (Image Processing)',
-      hero_tagline: '\u0639\u0636\u0648 \u0647\u064a\u0626\u0629 \u062a\u062f\u0631\u064a\u0633\u064a\u0629\u060c \u0648\u0628\u0627\u062d\u062b\u060c \u0648\u0637\u0627\u0644\u0628 \u062f\u0631\u0627\u0633\u0627\u062a \u0639\u0644\u064a\u0627\u060c \u064a\u0633\u0639\u0649 \u0644\u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0647\u0646\u062f\u0633\u0629 \u0639\u0628\u0631 \u0627\u0644\u0639\u0644\u0648\u0645 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u064a.',
+      hero_subtitle: 'هندسة الاتصالات · معالجة الإشارات · معالجة الصور',
+      hero_tagline: 'عضو هيئة تدريسية، وباحث، وطالب دراسات عليا، ملتزم بتطوير الهندسة من خلال العلوم التطبيقية.',
       hero_scroll: '\u062a\u0645\u0631\u064a\u0631',
       sec_about: '\u0645\u0646 \u0623\u0646\u0627',
       about_title_1: '\u0645\u0647\u0646\u062f\u0633.',
       about_title_2: '\u0628\u0627\u062d\u062b.',
-      about_title_3: '\u0645\u062f\u0631\u0633.',
-      about_lead: '\u00ab\u062c\u0633\u0631 \u0628\u064a\u0646 \u0627\u0644\u0646\u0638\u0631\u064a\u0629 \u0648\u0627\u0644\u062a\u0642\u0646\u064a\u0629 \u0644\u0645\u0648\u0627\u062c\u0647\u0629 \u062a\u062d\u062f\u064a\u0627\u062a \u0627\u0644\u0639\u0627\u0644\u0645 \u0627\u0644\u062d\u0642\u064a\u0642\u064a.\u00bb',
-      about_desc: '\u0645\u0647\u0646\u062f\u0633 \u0627\u062a\u0635\u0627\u0644\u0627\u062a \u062d\u0627\u0635\u0644 \u0639\u0644\u0649 \u062f\u0631\u062c\u062a\u064a\u0646 \u0645\u0627\u062c\u0633\u062a\u064a\u0631 \u0641\u064a \u0627\u0644\u0647\u0646\u062f\u0633\u0629\u060c \u0645\u0639 \u0645\u0624\u0644\u0641\u0627\u062a \u0628\u062d\u062b\u064a\u0629 \u0646\u0634\u0637\u0629\u060c \u0648\u062e\u0628\u0631\u0629 \u062a\u0634\u0645\u0644 \u0627\u0644\u062c\u0627\u0645\u0639\u0627\u062a \u0648\u0627\u0644\u0645\u0646\u0638\u0645\u0627\u062a \u0627\u0644\u062f\u0648\u0644\u064a\u0629 \u0648\u0627\u0644\u0642\u0637\u0627\u0639 \u0627\u0644\u0635\u0646\u0627\u0639\u064a.',
-      role_lecturer: '\u0645\u0633\u0627\u0639\u062f \u0645\u062f\u0631\u0633 (Assistant Lecturer)',
-      role_lecturer_org: '\u0627\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u0644\u064a\u0628\u064a \u0644\u0644\u0628\u062d\u0648\u062b \u0627\u0644\u0647\u0646\u062f\u0633\u064a\u0629 \u0648\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a (Libyan Center for Engineering Research and Information Technology)',
-      role_engineer: '\u0645\u0647\u0646\u062f\u0633 \u062a\u0642\u0646\u064a (Technical Engineer)',
-      role_engineer_org: '\u0645\u0646\u0638\u0645\u0629 \u0627\u0644\u0634\u0631\u0627\u0643\u0629 \u0627\u0644\u0645\u062c\u062a\u0645\u0639\u064a\u0629\u060c \u0644\u064a\u0628\u064a\u0627 (Community Partnership Organization)',
+      about_title_3: 'أكاديمي.',
+      about_lead: '«ربط النظرية بالتقنية لحل التحديات الواقعية.»',
+      about_desc: 'مهندس اتصالات حاصل على درجتي ماجستير في الهندسة، مع أبحاث منشورة نشطة، وخبرة تشمل الجامعات والمنظمات الدولية والقطاع الصناعي.',
+      role_lecturer: 'محاضر مساعد',
+      role_lecturer_org: 'المركز الليبي للبحوث الهندسية وتقنية المعلومات',
+      role_engineer: 'المسؤول التقني والفني',
+      role_engineer_org: 'منظمة الشراكة المجتمعية، ليبيا',
       about_langs_title: '\u0627\u0644\u0644\u063a\u0627\u062a',
       lang_ar: '\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
       lang_tr: '\u0627\u0644\u062a\u0631\u0643\u064a\u0629',
       lang_en: '\u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629',
-      about_gpa_lbl: '\u0645\u0639\u062f\u0644 \u0627\u0644\u0645\u0627\u062c\u0633\u062a\u064a\u0631 (GPA)',
-      logo_alt: 'Abdelbary Algamel',
+      about_gpa_lbl: 'معدل الماجستير',
+      logo_alt: 'عبدالباري الجمل',
       sec_research: '\u0627\u0644\u0628\u062d\u062b',
       research_h2_1: '\u0623\u0648\u0631\u0627\u0642 ',
       research_h2_2: '\u0645\u0646\u0634\u0648\u0631\u0629',
-      paper1_title: '\u062a\u0635\u0641\u064a\u0629 \u0642\u0646\u0648\u0627\u062a RGB \u0627\u0644\u062a\u0643\u064a\u0641\u064a\u0629 \u0648\u0627\u0644\u0645\u062d\u0633\u0651\u0646\u0629 \u0644\u062a\u0642\u0644\u064a\u0644 \u0627\u0644\u0636\u0648\u0636\u0627\u0621 \u0641\u064a \u0627\u0644\u0635\u0648\u0631 \u0627\u0644\u0645\u0644\u0648\u0646\u0629 (Adaptive and Optimized RGB Channel Filtering for Noise Reduction in Color Images)',
-      paper1_meta: '2025 \u00b7 \u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0625\u0634\u0627\u0631\u0627\u062a \u0648\u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u0635\u0648\u0631 (Signal Processing & Image Analysis)',
-      paper2_title: '\u062a\u062d\u0633\u064a\u0646 \u062a\u0648\u0632\u064a\u0639 \u0627\u0644\u0642\u062f\u0631\u0629 \u0641\u064a \u0623\u0646\u0638\u0645\u0629 NOMA \u0628\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u062a\u062d\u0633\u064a\u0646 \u0633\u0631\u0628 \u0627\u0644\u062c\u0633\u0645 (PSO) \u0644\u0644\u062d\u062f \u0645\u0646 \u0623\u062f\u0646\u0649 \u062e\u0637\u0623 \u0627\u0644\u0625\u0634\u0627\u0631\u0629 (BER) (NOMA, PSO, BER)',
-      paper2_meta: '2025 \u00b7 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0644\u0627\u0633\u0644\u0643\u064a\u0629 (Wireless Communications)',
-      paper3_title: '\u062a\u0642\u064a\u064a\u0645 \u0623\u062f\u0627\u0621 \u0627\u0644\u0648\u0635\u0648\u0644 \u0627\u0644\u0645\u062a\u0639\u062f\u062f \u063a\u064a\u0631 \u0627\u0644\u0645\u062a\u0639\u0627\u0645\u062f (NOMA) \u0645\u0639 \u0623\u0633\u0644\u0648\u0628 \u062a\u0636\u0645\u064a\u0646 \u0631\u0642\u0645\u064a (Digital Modulation Schemes)',
-      paper3_meta: '2021 \u00b7 \u0623\u0646\u0638\u0645\u0629 5G \u0648NOMA (5G & NOMA Systems)',
+      paper1_title: 'الترشيح التكيفي والمحسّن لقنوات الألوان RGB لتقليل الضوضاء في الصور الملونة',
+      paper1_meta: '2025 · معالجة الإشارات وتحليل الصور',
+      paper2_title: 'تحسين توزيع القدرة في أنظمة NOMA باستخدام خوارزمية تحسين سرب الجسيمات PSO لتقليل معدل خطأ البت BER',
+      paper2_meta: '2025 · الاتصالات اللاسلكية',
+      paper3_title: 'تقييم أداء الوصول المتعدد غير المتعامد NOMA مع أساليب التضمين الرقمي',
+      paper3_meta: '2021 · أنظمة الجيل الخامس 5G ونظام NOMA',
       sec_work: '\u0627\u0644\u062e\u0628\u0631\u0629',
       work_h2_1: '\u062d\u064a\u062b ',
       work_h2_2: '\u0639\u0645\u0644\u062a\u064f',
       work_aria_lcerit: '\u0627\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u0644\u064a\u0628\u064a \u0644\u0644\u0628\u062d\u0648\u062b \u0627\u0644\u0647\u0646\u062f\u0633\u064a\u0629 \u0648\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u2014 \u0627\u0644\u0645\u0633\u0645\u0649 \u0627\u0644\u062d\u0627\u0644\u064a',
       work_aria_cpo: '\u0645\u0646\u0638\u0645\u0629 \u0627\u0644\u0634\u0631\u0627\u0643\u0629 \u0627\u0644\u0645\u062c\u062a\u0645\u0639\u064a\u0629 \u2014 \u0627\u0644\u0645\u0633\u0645\u0649 \u0627\u0644\u062d\u0627\u0644\u064a',
-      work_lcerit: '\u0627\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u0644\u064a\u0628\u064a \u0644\u0644\u0628\u062d\u0648\u062b \u0627\u0644\u0647\u0646\u062f\u0633\u064a\u0629 \u0648\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a (LCERIT)',
-      work_cpo: '\u0645\u0646\u0638\u0645\u0629 \u0627\u0644\u0634\u0631\u0627\u0643\u0629 \u0627\u0644\u0645\u062c\u062a\u0645\u0639\u064a\u0629 (CPO)',
-      hint_hover: '\u0645\u0631\u0651\u0631 \u0627\u0644\u0645\u0624\u0634\u0631 (Hover)',
-      hint_tap: '\u0627\u0646\u0642\u0631 (Tap)',
+      work_lcerit: 'المركز الليبي للبحوث الهندسية وتقنية المعلومات',
+      work_cpo: 'منظمة الشراكة المجتمعية',
+      hint_hover: '',
+      hint_tap: 'انقر',
       work_ongoing: '\u0645\u0633\u062a\u0645\u0631',
-      work_ongoing_sub: '\u0623\u0634\u063a\u0644 \u062d\u0627\u0644\u064a\u064b\u0627 \u0641\u064a \u0647\u0630\u0627 \u0627\u0644\u0645\u0633\u0645\u0649',
-      work_whyme: '\u0645\u0646\u0638\u0645\u0629 Why Me \u2014 \u0645\u0646\u0634\u0626 \u0645\u062d\u062a\u0648\u0649 \u0648\u0645\u0635\u0645\u0645 \u062c\u0631\u0627\u0641\u064a\u0643 (Content Creator & Graphic Designer)',
-      work_irc: '\u0627\u0644\u0644\u062c\u0646\u0629 \u0627\u0644\u062f\u0648\u0644\u064a\u0629 \u0644\u0644\u0625\u0646\u0642\u0627\u0630 (International Rescue Committee \u2014 IRC)',
-      work_napi: '\u0645\u0628\u0627\u062f\u0631\u0629 \u0627\u0644\u0633\u064a\u0627\u0633\u0629 \u0644\u0634\u0645\u0627\u0644 \u0623\u0641\u0631\u064a\u0642\u064a\u0627 (NAPI) \u2014 \u0645\u0642\u064a\u0651\u0645 \u0645\u0634\u0627\u0631\u064a\u0639 (Project Evaluator)',
-      work_undp: '\u0628\u0631\u0646\u0627\u0645\u062c \u0627\u0644\u0623\u0645\u0645 \u0627\u0644\u0645\u062a\u062d\u062f \u0644\u0644\u062a\u0646\u0645\u064a\u0629 (UNDP)',
-      work_ard: '\u0634\u0631\u0643\u0629 ARD \u2014 \u0645\u0637\u0648\u0631 \u0648\u064a\u0628 (Web Developer)',
-      work_muni: '\u0628\u0644\u062f\u064a\u0629 \u0628\u0646\u064a \u0627\u0644\u0648\u0644\u064a\u062f',
+      work_ongoing_sub: 'أشغل حاليًا هذا المنصب',
+      work_whyme: 'منظمة Why Me — منشئ محتوى ومصمم جرافيك',
+      work_irc: 'اللجنة الدولية للإنقاذ',
+      work_napi: 'مبادرة السياسة لشمال أفريقيا — مقيّم مشاريع',
+      work_undp: 'برنامج الأمم المتحدة للتنمية',
+      work_ard: 'شركة ARD — مطور ويب',
+      work_muni: 'بلدية بني وليد',
       sec_edu: '\u0627\u0644\u062a\u0639\u0644\u064a\u0645',
       edu_h2_1: '\u0645\u0633\u0627\u0631 ',
       edu_h2_2: '\u0623\u0643\u0627\u062f\u064a\u0645\u064a',
-      edu_m1_deg: '\u0645\u0627\u062c\u0633\u062a\u064a\u0631 \u0641\u064a \u0627\u0644\u0647\u0646\u062f\u0633\u0629 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629 \u0648\u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629 (Electrical and Electronics Engineering)',
-      edu_m1_focus: '\u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0635\u0648\u0631 (Image processing)',
-      edu_pau: '\u062c\u0627\u0645\u0639\u0629 \u0628\u0627\u0645\u0648\u0643 \u0643\u0627\u0644\u0647 (Pamukkale University)',
-      edu_denizli: '\u062f\u0646\u064a\u0632\u0644\u064a\u060c \u062a\u0631\u0643\u064a\u0627',
-      edu_gpa_lbl: 'GPA',
-      edu_m2_deg: '\u0645\u0627\u062c\u0633\u062a\u064a\u0631 \u0641\u064a \u0647\u0646\u062f\u0633\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a (Communication Engineering)',
-      edu_m2_focus: '\u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0644\u0627\u0633\u0644\u0643\u064a\u0629 (Wireless Communications)',
-      edu_cet: '\u0643\u0644\u064a\u0629 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0627\u062a \u0627\u0644\u062a\u0642\u0646\u064a\u0629 (College of Electronic Technology)',
-      edu_bw_ly: '\u0628\u0646\u064a \u0627\u0644\u0648\u0644\u064a\u062f\u060c \u0644\u064a\u0628\u064a\u0627',
-      edu_b_deg: '\u0628\u0643\u0627\u0644\u0648\u0631\u064a\u0648\u0633 \u0641\u064a \u0647\u0646\u062f\u0633\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0648\u0627\u0644\u0645\u064a\u0643\u0631\u0648\u0648\u064a\u0641\u0627\u062a (Communication and Microwaves Engineering)',
+      edu_m1_deg: 'ماجستير في الهندسة الكهربائية والإلكترونية',
+      edu_m1_focus: 'معالجة الصور',
+      edu_pau: 'جامعة باموكالي',
+      edu_denizli: 'دينيزلي، تركيا',
+      edu_gpa_lbl: 'المعدل',
+      edu_m2_deg: 'ماجستير في هندسة الاتصالات',
+      edu_m2_focus: 'الاتصالات اللاسلكية',
+      edu_cet: 'كلية التقنية الإلكترونية - بني وليد',
+      edu_bw_ly: 'بني وليد، ليبيا',
+      edu_b_deg: 'بكالوريوس في هندسة الاتصالات والموجات الدقيقة',
       sec_community: '\u0627\u0644\u0645\u062c\u062a\u0645\u0639',
       comm_h2_1: '\u0623\u0646\u0634\u0637\u0629 \u0648\u062a\u0637\u0648\u0639 \u0648',
       comm_h2_2: '\u0639\u0636\u0648\u064a\u0627\u062a',
@@ -3262,17 +4022,17 @@
       act_when_2: '\u0645\u0646\u0630 2021',
       act_when_3: '\u0645\u0646\u0630 2020',
       act_when_4: '\u0645\u0646\u0630 2018',
-      act_asad: '\u0627\u0644\u062c\u0645\u0639\u064a\u0629 \u0627\u0644\u0623\u0641\u0631\u064a\u0642\u064a\u0629 \u0644\u0644\u0637\u0644\u0627\u0628 \u0641\u064a \u062f\u0646\u064a\u0632\u0644\u064a (ASAD)',
-      act_ypeer: '\u0634\u0628\u0643\u0629 Y-PEER',
-      act_redcrescent: '\u0627\u0644\u0647\u0644\u0627\u0644 \u0627\u0644\u0623\u062d\u0645\u0631 \u0627\u0644\u0644\u064a\u0628\u064a',
-      act_cpo: '\u0645\u0646\u0638\u0645\u0629 \u0627\u0644\u0634\u0631\u0627\u0643\u0629 \u0627\u0644\u0645\u062c\u062a\u0645\u0639\u064a\u0629 (CPO)',
+      act_asad: 'اتحاد الطلبة الأفارقة في دينيزلي',
+      act_ypeer: 'شبكة Y-PEER',
+      act_redcrescent: 'الهلال الأحمر الليبي',
+      act_cpo: 'منظمة الشراكة المجتمعية',
       sec_more: '\u0627\u0644\u0645\u0632\u064a\u062f',
-      more_h2_1: '\u0639\u0645\u0644 ',
-      more_h2_2: '\u0623\u0643\u0627\u062f\u064a\u0645\u064a',
-      more_theses_title: '\u0623\u0637\u0631\u0648\u062d\u0629 \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0627\u0644\u0639\u0644\u064a\u0627',
-      more_intro: '\u064a\u0645\u062a\u062f \u0645\u0633\u0627\u0631\u064a \u0627\u0644\u0623\u0643\u0627\u062f\u064a\u0645\u064a \u0628\u0627\u0647\u062a\u0645\u0627\u0645 \u0645\u0633\u062a\u0645\u0631 \u0628\u0643\u064a\u0641\u064a\u0629 \u0627\u0644\u062a\u0642\u0627\u0621 \u0645\u0639 \u0627\u0644\u0645\u0645\u0627\u0631\u0633\u0629. \u0641\u064a \u0627\u0644\u0648\u0642\u062a \u0627\u0644\u062d\u0627\u0644\u064a \u0623\u0646\u0634\u0637 \u0628\u0634\u0643\u0644 \u0623\u0648\u0644\u064a \u0641\u064a <strong>\u0628\u062d\u062b \u0630\u0643\u0627\u0621 \u0627\u0635\u0637\u0646\u0627\u0639\u064a (Artificial Intelligence)</strong>\u060c \u0645\u062a\u0627\u0628\u0639\u064b\u0627 \u0644\u0644\u062a\u0637\u0648\u0631\u0627\u062a \u0627\u0644\u062a\u064a \u062a\u0631\u0628\u0637 \u0627\u0644\u062a\u0639\u0644\u0645 \u0627\u0644\u0622\u0644\u064a (Machine Learning) \u0628\u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0648\u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0625\u0634\u0627\u0631\u0629 \u0648\u0627\u0644\u0635\u0648\u0631 \u0648\u0623\u0646\u0638\u0645\u0629 \u0647\u0646\u062f\u0633\u064a\u0629 \u0645\u0648\u062b\u0648\u0642\u0629. \u0648\u0641\u064a \u0645\u0648\u0627\u0632\u064a\u0629 \u0630\u0644\u0643 \u0623\u0647\u062a\u0645 <strong>\u0628\u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0648\u064a\u0628 (Web design)</strong>\u060c \u0644\u0628\u0646\u0627\u0621 \u0648\u0627\u062c\u0647\u0627\u062a \u0648\u0627\u0636\u062d\u0629 \u0648\u0647\u0627\u062f\u0641\u0629 \u0648\u0645\u062d\u062a\u0631\u0645\u0629 \u0644\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646. <strong>\u0648\u0623\u0628\u0642\u0649 \u0639\u0644\u0649 \u0627\u0637\u0644\u0627\u0639 \u0628\u0627\u0644\u0623\u0641\u0643\u0627\u0631 \u0627\u0644\u0646\u0627\u0634\u0626\u0629</strong> \u0641\u064a \u0627\u0644\u0645\u062c\u0644\u0627\u062a \u0648\u0645\u062c\u062a\u0645\u0639\u0627\u062a \u0627\u0644\u0645\u0635\u062f\u0631 \u0627\u0644\u0645\u0641\u062a\u0648\u062d \u0648\u0645\u0639\u0627\u064a\u064a\u0631 \u0627\u0644\u062a\u0635\u0645\u064a\u0645\u060c \u062d\u062a\u0649 \u062a\u0639\u0643\u0633 \u0627\u0644\u062a\u062f\u0631\u064a\u0633 \u0648\u0627\u0644\u062a\u0639\u0627\u0648\u0646 \u0648\u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639 \u0627\u0644\u0634\u062e\u0635\u064a\u0629 \u0645\u0646\u0647\u062c\u064b\u0627 \u0645\u0639\u0627\u0635\u0631\u064b\u0627 \u0648\u0644\u064a\u0633 \u0628\u0645\u0627 \u064a\u062a\u062e\u0644\u0641 \u0639\u0646 \u0627\u0644\u0623\u0645\u0633. \u062a\u0644\u062e\u0635 \u0627\u0644\u0623\u0637\u0631\u0648\u062d \u0623\u062f\u0646\u0627\u0647 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0631\u0633\u0645\u064a \u0644\u0644\u0634\u0647\u0627\u062f\u0627\u062a\u060c \u0648\u0645\u0627 \u064a\u0632\u0627\u0644 \u064a\u062d\u0641\u0632\u0646\u064a \u0647\u0648 \u0627\u0644\u062f\u0645\u062c \u0628\u064a\u0646 <em>\u0627\u0644\u0627\u0633\u062a\u0642\u0635\u0627\u0621 \u0627\u0644\u062f\u0642\u064a\u0642</em> \u0648\u0627\u0644\u0623\u062f\u0648\u0627\u062a \u0627\u0644\u0630\u0643\u064a\u0629 \u0648\u062a\u062c\u0627\u0631\u0628 \u0631\u0642\u0645\u064a\u0629 \u0645\u0628\u0646\u064a\u0629 \u0628\u0627\u0642\u064a\u0629.',
-      more_thesis_1: '\u062a\u0635\u0645\u064a\u0645 \u062e\u0632\u0627\u0646\u0629 \u0623\u0644\u0648\u0627\u0646 \u0631\u0642\u0645\u064a\u0629 \u0644\u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u0644\u0648\u0646 \u0648\u0627\u0644\u0623\u0646\u0645\u0627\u0637 \u0641\u064a \u0635\u0646\u0627\u0639\u0629 \u0627\u0644\u0645\u0646\u0633\u0648\u062c\u0627\u062a (Digital Color Cabinet for Color and Pattern Analysis in the Textile Industry)\u060c <em>\u062c\u0627\u0645\u0639\u0629 \u0628\u0627\u0645\u0648\u0643 \u0643\u0627\u0644\u0647</em>',
-      more_thesis_2: '\u062a\u062d\u0633\u064a\u0646 \u0623\u0646\u0638\u0645\u0629 \u0627\u0644\u0648\u0635\u0648\u0644 \u0627\u0644\u0645\u062a\u0639\u062f\u062f \u063a\u064a\u0631 \u0627\u0644\u0645\u062a\u0639\u0627\u0645\u062f (NOMA)\u060c <em>\u0643\u0644\u064a\u0629 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0627\u062a \u0627\u0644\u062a\u0642\u0646\u064a\u0629</em>',
+      more_h2_1: 'العمل ',
+      more_h2_2: 'الأكاديمي',
+      more_theses_title: 'أطروحات الدراسات العليا',
+      more_intro: 'يتشكّل مساري الأكاديمي من اهتمام مستمر بكيفية التقاء الجانب النظري بالممارسة العملية. حاليًا، أنا <strong>منخرط بشكل خاص في أبحاث الذكاء الاصطناعي</strong>، متابعًا التطورات التي تربط التعلم الآلي بالاتصالات ومعالجة الإشارات والصور والأنظمة الهندسية الموثوقة. بالتوازي مع ذلك، أُكرّس اهتمامًا خاصًا لـ<strong>تصميم الويب</strong>، ساعيًا لصياغة واجهات واضحة وهادفة تحترم مستخدميها. أواكب الأفكار الناشئة عبر المجلات الأكاديمية ومجتمعات المصادر المفتوحة ومعايير التصميم، بحيث يعكس التدريس والتعاون والمشاريع الشخصية جميعها المناهج المعاصرة بدلاً من الافتراضات القديمة. الأطروحات المدرجة أدناه تلخّص البحث الرسمي المرتبط بالدرجة العلمية؛ أما ما يستمر في تحفيزي فهو ذلك المزيج من <em>البحث الدقيق</em> والأدوات الذكية والتجارب الرقمية المصمَّمة بعناية.',
+      more_thesis_1: 'تصميم خزانة ألوان رقمية لتحليل الألوان والأنماط في صناعة المنسوجات، <em>جامعة باموكالي</em>',
+      more_thesis_2: 'تحسين أنظمة الوصول المتعدد غير المتعامد NOMA، <em>كلية التقنية الإلكترونية - بني وليد</em>',
       sec_contact: '\u062a\u0648\u0627\u0635\u0644',
       contact_h2_1: '\u0644\u0644\u062a\u0648\u0627\u0635\u0644 ',
       contact_h2_2: '\u0645\u0639\u064a',
@@ -3280,7 +4040,7 @@
       email_uni: '\u0645\u0631\u0627\u0633\u0644\u0627\u062a \u062c\u0627\u0645\u0639\u064a\u0629',
       email_work: '\u0645\u0631\u0627\u0633\u0644\u0627\u062a \u0645\u0647\u0646\u064a\u0629',
       form_title: '\u0631\u0633\u0627\u0644\u0629 \u0633\u0631\u064a\u0639\u0629',
-      form_note: '\u062a\u064f\u0631\u0627\u062c\u0639 \u0627\u0644\u0631\u0633\u0627\u0626\u0644 \u0627\u0644\u0645\u0631\u0633\u0644\u0629 \u0639\u0628\u0631 \u0647\u0630\u0627 \u0627\u0644\u0646\u0645\u0648\u0630\u062c \u063a\u0627\u0644\u0628\u064b\u0627 \u062e\u0644\u0627\u0644 24 \u0633\u0627\u0639\u0629.',
+      form_note: 'تُراجع الرسائل المرسلة عبر هذا النموذج عادةً خلال 24 ساعة.',
       form_label_name: '\u0627\u0644\u0627\u0633\u0645 \u0623\u0648 \u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641',
       form_label_msg: '\u0627\u0644\u0631\u0633\u0627\u0644\u0629',
       form_ph_name: '\u0627\u0643\u062a\u0628 \u0627\u0633\u0645\u0643 \u0623\u0648 \u0631\u0642\u0645\u0643',
@@ -3290,16 +4050,28 @@
       form_ok: '\u0634\u0643\u0631\u064b\u0627 \u2014 \u062a\u0645 \u0625\u0631\u0633\u0627\u0644 \u0631\u0633\u0627\u0644\u062a\u0643.',
       form_err_send: '\u062a\u0639\u0630\u0631 \u0627\u0644\u0625\u0631\u0633\u0627\u0644. \u064a\u064f\u0631\u062c\u0649 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u0628\u0631\u064a\u062f \u0623\u062f\u0646\u0627\u0647.',
       form_err_net: '\u062e\u0637\u0623 \u0641\u064a \u0627\u0644\u0634\u0628\u0643\u0629. \u064a\u064f\u0631\u062c\u0649 \u0627\u0644\u0643\u062a\u0627\u0628\u0629 \u0639\u0628\u0631 \u0627\u0644\u0628\u0631\u064a\u062f \u0645\u0628\u0627\u0634\u0631\u0629.',
+      form_sending: 'جاري الإرسال...',
+      cv_btn_aria: 'طلب السيرة الذاتية المفصلة',
+      cv_hint_text: 'اطلب السيرة الذاتية المفصلة',
+      cv_chat_title: 'طلب السيرة الذاتية',
+      cv_chat_subtitle: 'نحن هنا لمساعدتك',
+      cv_chat_message: 'مرحباً! يسعدني أن أرسل لك سيرتي الذاتية الكاملة والمفصلة. يرجى ملء المعلومات التالية وسأرسلها لك في أقرب وقت.',
+      cv_email_label: 'البريد الإلكتروني',
+      cv_email_placeholder: 'مثال@بريد.com',
+      cv_purpose_label: 'سبب الطلب والجهة',
+      cv_purpose_placeholder: 'مثال: طلب توظيف في شركة ABC، أو فرصة تعاون في مشروع...',
+      cv_request_btn: 'طلب السيرة الذاتية',
+      cv_form_ok: 'شكراً لك! تم استلام طلبك بنجاح. السيرة الذاتية المفصلة لا تُرسل تلقائياً. سيتم مراجعة طلبك وبناءً عليه سيتم إرسال السيرة الذاتية. نشكر تفهمكم.',
       ack_title: '\u0634\u0643\u0631 \u0648\u062a\u0642\u062f\u064a\u0631',
-      ack_alt_1: '\u0643\u0644\u064a\u0629 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0627\u062a \u0627\u0644\u062a\u0642\u0646\u064a\u0629\u060c \u0628\u0646\u064a \u0627\u0644\u0648\u0644\u064a\u062f \u2014 \u0644\u064a\u0628\u064a\u0627',
-      ack_alt_2: 'YTB \u2014 \u0648\u0643\u0627\u0644\u0629 \u0645\u0646\u062d \u062a\u0631\u0643\u064a\u0627 (\u0628\u0631\u0646\u0627\u0645\u062c T\u00fcrkiye Scholarships)',
+      ack_alt_1: 'كلية التقنية الإلكترونية، بني وليد — ليبيا',
+      ack_alt_2: 'وكالة منح تركيا',
       ack_alt_3: '\u0627\u0644\u0647\u064a\u0626\u064a\u0629 \u0627\u0644\u0644\u064a\u0628\u064a\u0629 \u0644\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0645\u064a',
-      ack_alt_4: '\u0645\u0646\u062d \u062a\u0631\u0643\u064a\u0627 (T\u00fcrkiye Scholarships)',
+      ack_alt_4: 'منح تركيا',
       ack_alt_5: '\u0634\u0631\u064a\u0643 \u0645\u0624\u0633\u0633\u064a',
-      ack_alt_6: '\u0645\u0646\u0638\u0645\u0629 \u0627\u0644\u0634\u0631\u0627\u0643\u0629 \u0627\u0644\u0645\u062c\u062a\u0645\u0639\u064a\u0629 (CPO)',
+      ack_alt_6: 'منظمة الشراكة المجتمعية',
       ack_alt_7: '\u0639\u064a\u0627\u062f\u0627\u062a \u0627\u0644\u0647\u0644\u0627\u0644 \u0627\u0644\u0623\u062d\u0645\u0631 \u2014 \u0623\u062c\u062e\u0627\u0628\u064a\u0629',
-      ack_alt_8: '\u062c\u0627\u0645\u0639\u0629 \u0628\u0627\u0645\u0648\u0643 \u0643\u0627\u0644\u0647 \u2014 \u062f\u0646\u064a\u0632\u0644\u064a\u060c \u062a\u0631\u0643\u064a\u0627',
-      footer_rights: '\u00a9 2025 Abdelbary Algamel. \u062c\u0645\u064a\u0639 \u0627\u0644\u062d\u0642\u0648\u0642 \u0645\u062d\u0641\u0648\u0638\u0629.',
+      ack_alt_8: 'جامعة باموكالي — دينيزلي، تركيا',
+      footer_rights: '© 2025 عبدالباري الجمل. جميع الحقوق محفوظة.',
     },
   };
 
@@ -3371,6 +4143,8 @@
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const open = !root.classList.contains('is-open');
+      
+      // إغلاق جميع قوائم اللغات الأخرى
       document.querySelectorAll('.lang-switch.is-open').forEach((r) => {
         if (r !== root) {
           r.classList.remove('is-open');
@@ -3378,6 +4152,15 @@
           if (b) b.setAttribute('aria-expanded', 'false');
         }
       });
+      
+      // إغلاق نافذة السي في عند فتح قائمة اللغات
+      const cvPanel = document.getElementById('cv-chat-panel');
+      const cvBtn = document.getElementById('cv-chat-btn');
+      if (cvPanel && cvPanel.classList.contains('is-open') && open) {
+        cvPanel.classList.remove('is-open');
+        if (cvBtn) cvBtn.style.display = 'flex';
+      }
+      
       root.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
@@ -3389,21 +4172,42 @@
     });
   });
 
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (e) => {
+    // إغلاق قائمة اللغات
     document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
       root.classList.remove('is-open');
       const b = root.querySelector('.lang-switch__btn');
       if (b) b.setAttribute('aria-expanded', 'false');
     });
+    
+    // إغلاق نافذة السي في عند النقر خارجها
+    const cvPanel = document.getElementById('cv-chat-panel');
+    const cvBtn = document.getElementById('cv-chat-btn');
+    if (cvPanel && cvPanel.classList.contains('is-open')) {
+      // التحقق من أن النقر ليس داخل النافذة أو على الزر
+      if (!cvPanel.contains(e.target) && !cvBtn.contains(e.target)) {
+        cvPanel.classList.remove('is-open');
+        cvBtn.style.display = 'flex';
+      }
+    }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      // إغلاق قائمة اللغات
       document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
         root.classList.remove('is-open');
         const b = root.querySelector('.lang-switch__btn');
         if (b) b.setAttribute('aria-expanded', 'false');
       });
+      
+      // إغلاق نافذة السي في
+      const cvPanel = document.getElementById('cv-chat-panel');
+      const cvBtn = document.getElementById('cv-chat-btn');
+      if (cvPanel && cvPanel.classList.contains('is-open')) {
+        cvPanel.classList.remove('is-open');
+        if (cvBtn) cvBtn.style.display = 'flex';
+      }
     }
   });
 
@@ -3460,6 +4264,108 @@
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // CV REQUEST CHATBOT
+  const cvChatBtn = document.getElementById('cv-chat-btn');
+  const cvChatPanel = document.getElementById('cv-chat-panel');
+  const cvChatClose = document.getElementById('cv-chat-close');
+  const cvRequestForm = document.getElementById('cv-request-form');
+  const cvFormStatus = document.getElementById('cv-form-status');
+  const cvChatHint = document.getElementById('cv-chat-hint');
+
+  // إخفاء السهم بعد 8 ثواني
+  if (cvChatHint) {
+    setTimeout(() => {
+      cvChatHint.classList.add('hidden');
+    }, 8000);
+  }
+
+  if (cvChatBtn && cvChatPanel) {
+    cvChatBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cvChatPanel.classList.add('is-open');
+      cvChatBtn.style.display = 'none';
+      if (cvChatHint) cvChatHint.style.display = 'none';
+      
+      // إغلاق قائمة اللغات عند فتح نافذة السي في
+      document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
+        root.classList.remove('is-open');
+        const b = root.querySelector('.lang-switch__btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // منع إغلاق النافذة عند النقر بداخلها
+    cvChatPanel.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    cvChatClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cvChatPanel.classList.remove('is-open');
+      cvChatBtn.style.display = 'flex';
+      // لا نظهر السهم مرة أخرى بعد الإغلاق
+    });
+
+    cvRequestForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = cvRequestForm.querySelector('.cv-submit-btn');
+      cvFormStatus.textContent = '';
+      cvFormStatus.classList.remove('is-error', 'is-success');
+      
+      const fd = new FormData(cvRequestForm);
+      const payload = Object.fromEntries(fd.entries());
+      
+      if (payload.botcheck) {
+        cvFormStatus.classList.add('is-error');
+        cvFormStatus.textContent = t('form_err_bot');
+        return;
+      }
+      delete payload.botcheck;
+      payload.subject = 'CV Request — abdelbary.ly';
+      
+      btn.disabled = true;
+      btn.textContent = t('form_sending') || 'جاري الإرسال...';
+      
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.success) {
+          cvFormStatus.classList.add('is-success');
+          cvFormStatus.textContent = t('cv_form_ok') || 'شكراً لك! تم استلام طلبك بنجاح. السيرة الذاتية المفصلة لا تُرسل تلقائياً. سيتم مراجعة طلبك وبناءً عليه سيتم إرسال السيرة الذاتية. نشكر تفهمكم.';
+          
+          // Hide form fields after successful submission
+          setTimeout(() => {
+            const formGroups = cvRequestForm.querySelectorAll('.cv-form-group');
+            formGroups.forEach(group => {
+              group.style.display = 'none';
+            });
+            btn.style.display = 'none';
+            
+            // Update message
+            const chatMessage = document.querySelector('.cv-chat-message p');
+            if (chatMessage) {
+              chatMessage.textContent = t('cv_form_ok');
+            }
+          }, 1500);
+        } else {
+          cvFormStatus.classList.add('is-error');
+          cvFormStatus.textContent = data.message || t('form_err_send');
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i> ' + t('cv_request_btn');
+        }
+      } catch (err) {
+        cvFormStatus.classList.add('is-error');
+        cvFormStatus.textContent = t('form_err_net');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i> ' + t('cv_request_btn');
+      }
+    });
+  }
 
 </script>
 </body>
