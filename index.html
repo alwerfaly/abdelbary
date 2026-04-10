@@ -4148,6 +4148,8 @@
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const open = !root.classList.contains('is-open');
+      
+      // إغلاق جميع قوائم اللغات الأخرى
       document.querySelectorAll('.lang-switch.is-open').forEach((r) => {
         if (r !== root) {
           r.classList.remove('is-open');
@@ -4155,6 +4157,15 @@
           if (b) b.setAttribute('aria-expanded', 'false');
         }
       });
+      
+      // إغلاق لوحة طلب السي في
+      const cvPanel = document.getElementById('cv-chat-panel');
+      const cvBtn = document.getElementById('cv-chat-btn');
+      if (cvPanel && cvPanel.classList.contains('is-open')) {
+        cvPanel.classList.remove('is-open');
+        if (cvBtn) cvBtn.style.display = 'flex';
+      }
+      
       root.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
@@ -4167,20 +4178,38 @@
   });
 
   document.addEventListener('click', () => {
+    // إغلاق جميع قوائم اللغات
     document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
       root.classList.remove('is-open');
       const b = root.querySelector('.lang-switch__btn');
       if (b) b.setAttribute('aria-expanded', 'false');
     });
+    
+    // إغلاق لوحة طلب السي في
+    const cvPanel = document.getElementById('cv-chat-panel');
+    const cvBtn = document.getElementById('cv-chat-btn');
+    if (cvPanel && cvPanel.classList.contains('is-open')) {
+      cvPanel.classList.remove('is-open');
+      if (cvBtn) cvBtn.style.display = 'flex';
+    }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      // إغلاق جميع قوائم اللغات
       document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
         root.classList.remove('is-open');
         const b = root.querySelector('.lang-switch__btn');
         if (b) b.setAttribute('aria-expanded', 'false');
       });
+      
+      // إغلاق لوحة طلب السي في
+      const cvPanel = document.getElementById('cv-chat-panel');
+      const cvBtn = document.getElementById('cv-chat-btn');
+      if (cvPanel && cvPanel.classList.contains('is-open')) {
+        cvPanel.classList.remove('is-open');
+        if (cvBtn) cvBtn.style.display = 'flex';
+      }
     }
   });
 
@@ -4254,13 +4283,28 @@
   }
 
   if (cvChatBtn && cvChatPanel) {
-    cvChatBtn.addEventListener('click', () => {
+    // منع إغلاق اللوحة عند الضغط داخلها
+    cvChatPanel.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    cvChatBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
+      // إغلاق جميع قوائم اللغات
+      document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
+        root.classList.remove('is-open');
+        const b = root.querySelector('.lang-switch__btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      
       cvChatPanel.classList.add('is-open');
       cvChatBtn.style.display = 'none';
       if (cvChatHint) cvChatHint.style.display = 'none';
     });
 
-    cvChatClose.addEventListener('click', () => {
+    cvChatClose.addEventListener('click', (e) => {
+      e.stopPropagation();
       cvChatPanel.classList.remove('is-open');
       cvChatBtn.style.display = 'flex';
       // لا نظهر السهم مرة أخرى بعد الإغلاق
