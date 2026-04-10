@@ -676,14 +676,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 0%;
     display: block;
     transform: scale(1);
     transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
     filter: saturate(1.08) contrast(1.03) brightness(1.02);
   }
   .about-photo-frame:hover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
     filter: saturate(1.15) contrast(1.05) brightness(1.03);
   }
   .about-photo-frame::after {
@@ -1705,31 +1705,15 @@
     .work-list { grid-template-columns: 1fr; }
     .activity-grid { grid-template-columns: 1fr; }
     .about-visual {
-      max-width: 320px;
+      max-width: 300px;
       padding: 1.5rem 0 0;
       text-align: center;
-      margin: 0 auto;
     }
     .about-deco {
       left: 0.35rem;
       top: 0.35rem;
       width: 5rem;
       height: 5rem;
-    }
-    
-    /* تحسين عرض الصورة على الموبايل */
-    .about-photo-frame {
-      max-height: min(65vh, 480px);
-      aspect-ratio: 3 / 4;
-    }
-    
-    .about-photo-frame img {
-      object-position: center top;
-      transform: scale(0.98);
-    }
-    
-    .about-photo-frame:hover img {
-      transform: scale(1.02);
     }
     .about-stat {
       position: static;
@@ -1773,21 +1757,6 @@
       text-align-last: start;
     }
     
-    /* تحسين إضافي للصورة على الموبايل الصغير */
-    .about-visual {
-      max-width: 280px;
-    }
-    
-    .about-photo-frame {
-      max-height: min(60vh, 420px);
-      aspect-ratio: 3 / 4;
-    }
-    
-    .about-photo-frame img {
-      object-position: center 5%;
-      transform: scale(0.96);
-    }
-    
     /* تحسينات الفيديو للموبايل */
     .hero-video-shell {
       height: calc(100vh - var(--nav-offset));
@@ -1823,6 +1792,24 @@
       box-shadow:
         0 4px 16px rgba(37, 99, 235, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    /* تحسين صورة "من أنا" للموبايل */
+    .about-visual {
+      max-width: 280px;
+    }
+    
+    .about-photo-frame {
+      max-height: min(58vh, 400px);
+    }
+    
+    .about-photo-frame img {
+      object-position: center 0%;
+      transform: scale(0.95);
+    }
+    
+    .about-photo-frame:hover img {
+      transform: scale(0.98);
     }
   }
 
@@ -2351,6 +2338,24 @@
     
     [dir="rtl"] .cv-chat-hint {
       left: 4.5rem;
+    }
+    
+    /* تحسين صورة "من أنا" للشاشات الصغيرة جداً */
+    .about-visual {
+      max-width: 240px;
+    }
+    
+    .about-photo-frame {
+      max-height: min(50vh, 350px);
+    }
+    
+    .about-photo-frame img {
+      object-position: center 0%;
+      transform: scale(0.92);
+    }
+    
+    .about-photo-frame:hover img {
+      transform: scale(0.95);
     }
   }
   
@@ -3158,7 +3163,7 @@
       cv_purpose_label: 'Tell me about your opportunity',
       cv_purpose_placeholder: 'e.g., Job opening at your company, collaboration proposal, research opportunity...',
       cv_request_btn: 'Send Me the CV',
-      cv_form_ok: 'Thank you! Your request has been received successfully. The detailed CV is not sent automatically. Your request will be reviewed, and the CV will be sent accordingly. We appreciate your understanding.',
+      cv_form_ok: 'Perfect! Your request is being processed. You\u2019ll receive my detailed CV in your inbox shortly.',
       ack_title: 'Acknowledgments',
       ack_alt_1: 'College of Electronic Technology, Bani Walid \u2014 Libya',
       ack_alt_2: 'YTB \u2014 T\u00fcrkiye scholarships agency',
@@ -3287,7 +3292,7 @@
       cv_purpose_label: 'Parlez-moi de votre opportunit\u00e9',
       cv_purpose_placeholder: 'Ex : Offre d\u2019emploi dans votre entreprise, proposition de collaboration, opportunit\u00e9 de recherche...',
       cv_request_btn: 'Envoyez-moi le CV',
-      cv_form_ok: 'Merci ! Votre demande a été reçue avec succès. Le CV détaillé n'est pas envoyé automatiquement. Votre demande sera examinée et le CV sera envoyé en conséquence. Nous vous remercions de votre compréhension.',
+      cv_form_ok: 'Parfait ! Votre demande est en cours de traitement. Vous recevrez mon CV d\u00e9taill\u00e9 dans votre bo\u00eete mail sous peu.',
       ack_title: 'Remerciements',
       ack_alt_1: 'Coll\u00e8ge de technologie \u00e9lectronique, Bani Walid \u2014 Libye',
       ack_alt_2: 'YTB \u2014 agence des bourses Turquie',
@@ -3415,8 +3420,8 @@
       cv_email_placeholder: 'siz@sirket.com',
       cv_purpose_label: 'F\u0131rsat\u0131n\u0131zdan bahsedin',
       cv_purpose_placeholder: '\u00d6rn: \u015eirketinizdeki i\u015f f\u0131rsat\u0131, i\u015fbirli\u011fi teklifi, ara\u015ft\u0131rma f\u0131rsat\u0131...',
-      cv_request_btn: 'Özgeçmişi Bana Gönder',
-      cv_form_ok: 'Teşekkür ederiz! Talebiniz başarıyla alındı. Detaylı özgeçmiş otomatik olarak gönderilmemektedir. Talebiniz incelenecek ve buna göre özgeçmiş gönderilecektir. Anlayışınız için teşekkür ederiz.',
+      cv_request_btn: '\u00d6zge\u00e7mi\u015fi Bana G\u00f6nder',
+      cv_form_ok: 'M\u00fckemmel! Talebiniz i\u015fleme al\u0131n\u0131yor. Detayl\u0131 \u00f6zge\u00e7mi\u015fimi k\u0131sa s\u00fcrede e-posta kutunuzda alacaks\u0131n\u0131z.',
       ack_title: 'Te\u015fekk\u00fcrler',
       ack_alt_1: 'Elektronik teknolojisi y\u00fcksekokulu, Bani Walid \u2014 Libya',
       ack_alt_2: 'YTB \u2014 T\u00fcrkiye burslar\u0131 kurumu',
@@ -3544,8 +3549,8 @@
       cv_email_placeholder: 'vy@kompaniya.ru',
       cv_purpose_label: '\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 \u043e \u0432\u0430\u0448\u0435\u0439 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438',
       cv_purpose_placeholder: '\u041d\u0430\u043f\u0440.: \u0412\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u0432 \u0432\u0430\u0448\u0435\u0439 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438, \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0435, \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c...',
-      cv_request_btn: 'Отправьте мне резюме',
-      cv_form_ok: 'Спасибо! Ваш запрос успешно получен. Подробное резюме не отправляется автоматически. Ваш запрос будет рассмотрен, и резюме будет отправлено соответственно. Благодарим за понимание.',
+      cv_request_btn: '\u041e\u0442\u043f\u0440\u0430\u0432\u044c\u0442\u0435 \u043c\u043d\u0435 \u0440\u0435\u0437\u044e\u043c\u0435',
+      cv_form_ok: '\u041e\u0442\u043b\u0438\u0447\u043d\u043e! \u0412\u0430\u0448 \u0437\u0430\u043f\u0440\u043e\u0441 \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0435\u0442\u0441\u044f. \u0412\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u043c\u043e\u0451 \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0435 \u0440\u0435\u0437\u044e\u043c\u0435 \u043d\u0430 \u043f\u043e\u0447\u0442\u0443 \u0432 \u0431\u043b\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f.',
       ack_title: '\u0411\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u043d\u043e\u0441\u0442\u0438',
       ack_alt_1: '\u041a\u043e\u043b\u043b\u0435\u0434\u0436 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0439, \u0411\u0430\u043d\u0438-\u0412\u0430\u043b\u0438\u0434 \u2014 \u041b\u0438\u0432\u0438\u044f',
       ack_alt_2: 'YTB \u2014 \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0441\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0439 T\u00fcrkiye',
@@ -3674,7 +3679,7 @@
       cv_purpose_label: 'Erz\u00e4hlen Sie mir von Ihrer M\u00f6glichkeit',
       cv_purpose_placeholder: 'z.B.: Stellenangebot in Ihrem Unternehmen, Kooperationsvorschlag, Forschungsm\u00f6glichkeit...',
       cv_request_btn: 'Senden Sie mir den Lebenslauf',
-      cv_form_ok: 'Vielen Dank! Ihre Anfrage wurde erfolgreich empfangen. Der detaillierte Lebenslauf wird nicht automatisch versendet. Ihre Anfrage wird geprüft und der Lebenslauf wird entsprechend versendet. Wir danken für Ihr Verständnis.',
+      cv_form_ok: 'Perfekt! Ihre Anfrage wird bearbeitet. Sie erhalten meinen detaillierten Lebenslauf in K\u00fcrze in Ihrem Posteingang.',
       ack_title: 'Danksagungen',
       ack_alt_1: 'Hochschule f\u00fcr Elektroniktechnik, Bani Walid \u2014 Libyen',
       ack_alt_2: 'YTB \u2014 Stipendienagentur T\u00fcrkiye',
@@ -3802,8 +3807,8 @@
       cv_email_placeholder: 'tu@empresa.com',
       cv_purpose_label: 'Cu\u00e9ntame sobre tu oportunidad',
       cv_purpose_placeholder: 'Ej.: Oferta de trabajo en tu empresa, propuesta de colaboraci\u00f3n, oportunidad de investigaci\u00f3n...',
-      cv_request_btn: 'Envíame el CV',
-      cv_form_ok: '¡Gracias! Tu solicitud ha sido recibida con éxito. El CV detallado no se envía automáticamente. Tu solicitud será revisada y el CV se enviará en consecuencia. Agradecemos tu comprensión.',
+      cv_request_btn: 'Env\u00edame el CV',
+      cv_form_ok: '\u00a1Perfecto! Tu solicitud est\u00e1 siendo procesada. Recibir\u00e1s mi CV detallado en tu bandeja de entrada en breve.',
       ack_title: 'Agradecimientos',
       ack_alt_1: 'Colegio de Tecnolog\u00eda Electr\u00f3nica, Bani Walid \u2014 Libia',
       ack_alt_2: 'YTB \u2014 agencia de becas de T\u00fcrkiye',
@@ -3932,7 +3937,7 @@
       cv_purpose_label: 'Scopo e organizzazione',
       cv_purpose_placeholder: 'Esempio: Candidatura presso l\u2019azienda ABC o opportunit\u00e0 di collaborazione su un progetto...',
       cv_request_btn: 'Richiedi CV',
-      cv_form_ok: 'Grazie! La tua richiesta è stata ricevuta con successo. Il CV dettagliato non viene inviato automaticamente. La tua richiesta sarà esaminata e il CV verrà inviato di conseguenza. Ti ringraziamo per la comprensione.',
+      cv_form_ok: 'La tua richiesta \u00e8 stata inviata con successo! Ti invieremo il CV a breve.',
       ack_title: 'Ringraziamenti',
       ack_alt_1: 'Istituto di tecnologie elettroniche, Bani Walid \u2014 Libia',
       ack_alt_2: 'YTB \u2014 agenzia delle borse di studio T\u00fcrkiye',
@@ -4061,7 +4066,7 @@
       cv_purpose_label: 'سبب الطلب والجهة',
       cv_purpose_placeholder: 'مثال: طلب توظيف في شركة ABC، أو فرصة تعاون في مشروع...',
       cv_request_btn: 'طلب السيرة الذاتية',
-      cv_form_ok: 'شكراً لك! تم استلام طلبك بنجاح. السيرة الذاتية المفصلة لا تُرسل تلقائياً. سيتم مراجعة طلبك وبناءً عليه سيتم إرسال السيرة الذاتية. نشكر تفهمكم.',
+      cv_form_ok: 'تم إرسال طلبك بنجاح! سنرسل لك السيرة الذاتية قريباً.',
       ack_title: '\u0634\u0643\u0631 \u0648\u062a\u0642\u062f\u064a\u0631',
       ack_alt_1: 'كلية التقنية الإلكترونية، بني وليد — ليبيا',
       ack_alt_2: 'وكالة منح تركيا',
@@ -4143,8 +4148,6 @@
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const open = !root.classList.contains('is-open');
-      
-      // إغلاق جميع قوائم اللغات الأخرى
       document.querySelectorAll('.lang-switch.is-open').forEach((r) => {
         if (r !== root) {
           r.classList.remove('is-open');
@@ -4152,15 +4155,6 @@
           if (b) b.setAttribute('aria-expanded', 'false');
         }
       });
-      
-      // إغلاق نافذة السي في عند فتح قائمة اللغات
-      const cvPanel = document.getElementById('cv-chat-panel');
-      const cvBtn = document.getElementById('cv-chat-btn');
-      if (cvPanel && cvPanel.classList.contains('is-open') && open) {
-        cvPanel.classList.remove('is-open');
-        if (cvBtn) cvBtn.style.display = 'flex';
-      }
-      
       root.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
@@ -4172,42 +4166,21 @@
     });
   });
 
-  document.addEventListener('click', (e) => {
-    // إغلاق قائمة اللغات
+  document.addEventListener('click', () => {
     document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
       root.classList.remove('is-open');
       const b = root.querySelector('.lang-switch__btn');
       if (b) b.setAttribute('aria-expanded', 'false');
     });
-    
-    // إغلاق نافذة السي في عند النقر خارجها
-    const cvPanel = document.getElementById('cv-chat-panel');
-    const cvBtn = document.getElementById('cv-chat-btn');
-    if (cvPanel && cvPanel.classList.contains('is-open')) {
-      // التحقق من أن النقر ليس داخل النافذة أو على الزر
-      if (!cvPanel.contains(e.target) && !cvBtn.contains(e.target)) {
-        cvPanel.classList.remove('is-open');
-        cvBtn.style.display = 'flex';
-      }
-    }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      // إغلاق قائمة اللغات
       document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
         root.classList.remove('is-open');
         const b = root.querySelector('.lang-switch__btn');
         if (b) b.setAttribute('aria-expanded', 'false');
       });
-      
-      // إغلاق نافذة السي في
-      const cvPanel = document.getElementById('cv-chat-panel');
-      const cvBtn = document.getElementById('cv-chat-btn');
-      if (cvPanel && cvPanel.classList.contains('is-open')) {
-        cvPanel.classList.remove('is-open');
-        if (cvBtn) cvBtn.style.display = 'flex';
-      }
     }
   });
 
@@ -4281,27 +4254,13 @@
   }
 
   if (cvChatBtn && cvChatPanel) {
-    cvChatBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
+    cvChatBtn.addEventListener('click', () => {
       cvChatPanel.classList.add('is-open');
       cvChatBtn.style.display = 'none';
       if (cvChatHint) cvChatHint.style.display = 'none';
-      
-      // إغلاق قائمة اللغات عند فتح نافذة السي في
-      document.querySelectorAll('.lang-switch.is-open').forEach((root) => {
-        root.classList.remove('is-open');
-        const b = root.querySelector('.lang-switch__btn');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
     });
 
-    // منع إغلاق النافذة عند النقر بداخلها
-    cvChatPanel.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-    
-    cvChatClose.addEventListener('click', (e) => {
-      e.stopPropagation();
+    cvChatClose.addEventListener('click', () => {
       cvChatPanel.classList.remove('is-open');
       cvChatBtn.style.display = 'flex';
       // لا نظهر السهم مرة أخرى بعد الإغلاق
@@ -4336,7 +4295,7 @@
         const data = await res.json();
         if (data.success) {
           cvFormStatus.classList.add('is-success');
-          cvFormStatus.textContent = t('cv_form_ok') || 'شكراً لك! تم استلام طلبك بنجاح. السيرة الذاتية المفصلة لا تُرسل تلقائياً. سيتم مراجعة طلبك وبناءً عليه سيتم إرسال السيرة الذاتية. نشكر تفهمكم.';
+          cvFormStatus.textContent = t('cv_form_ok') || 'تم إرسال طلبك بنجاح! سنرسل لك السيرة الذاتية قريباً.';
           
           // Hide form fields after successful submission
           setTimeout(() => {
