@@ -2088,6 +2088,15 @@
     overflow-y: auto;
   }
 
+  .cv-request-note {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+    font-weight: 400;
+  }
+
   .cv-chat-message {
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(56, 189, 248, 0.08));
     padding: 1rem;
@@ -2183,11 +2192,12 @@
 
   #cv-form-status {
     margin-top: 1rem;
-    padding: 0.75rem;
+    padding: 1rem;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-align: center;
     display: none;
+    line-height: 1.6;
   }
 
   #cv-form-status.is-success {
@@ -2195,6 +2205,14 @@
     background: rgba(34, 197, 94, 0.1);
     color: #16a34a;
     border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  #cv-form-status.is-success small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    opacity: 0.9;
+    line-height: 1.5;
   }
 
   #cv-form-status.is-error {
@@ -2935,7 +2953,7 @@
       </div>
       <div class="cv-chat-title">
         <h3 data-i18n="cv_chat_title">طلب السيرة الذاتية</h3>
-        <p data-i18n="cv_chat_subtitle">نحن هنا لمساعدتك</p>
+        <p data-i18n="cv_chat_subtitle">نموذج طلب - ليس شات بوت</p>
       </div>
     </div>
     <button id="cv-chat-close" class="cv-chat-close" aria-label="Close">
@@ -2944,8 +2962,11 @@
   </div>
 
   <div class="cv-chat-body">
+    <!-- Small note above form -->
+    <div class="cv-request-note" data-i18n="cv_request_note">اطلب CV مفصل كامل بكل اللغات</div>
+    
     <div class="cv-chat-message">
-      <p data-i18n="cv_chat_message">مرحباً! يسعدني أن أرسل لك سيرتي الذاتية الكاملة والمفصلة. يرجى ملء المعلومات التالية وسأرسلها لك في أقرب وقت.</p>
+      <p data-i18n="cv_chat_message">هذا نموذج طلب للحصول على السيرة الذاتية الكاملة. يرجى ملء المعلومات التالية لإرسال الطلب.</p>
     </div>
 
     <form id="cv-request-form">
@@ -3155,15 +3176,16 @@
       form_sending: 'Sending...',
       cv_btn_aria: 'Request Detailed CV',
       cv_hint_text: 'Request Detailed CV',
-      cv_chat_title: 'Get My Detailed CV',
-      cv_chat_subtitle: 'Let\u2019s connect professionally',
-      cv_chat_message: 'Hi there! I\u2019d love to share my comprehensive CV with you. Just drop your details below and I\u2019ll send it your way shortly.',
+      cv_chat_title: 'CV Request Form',
+      cv_chat_subtitle: 'Request Form - Not a Chatbot',
+      cv_request_note: 'Request detailed CV in all languages',
+      cv_chat_message: 'This is a request form to receive the complete CV. Please fill in the information below to submit your request.',
       cv_email_label: 'Your Email',
       cv_email_placeholder: 'you@company.com',
       cv_purpose_label: 'Tell me about your opportunity',
       cv_purpose_placeholder: 'e.g., Job opening at your company, collaboration proposal, research opportunity...',
-      cv_request_btn: 'Send Me the CV',
-      cv_form_ok: 'Perfect! Your request is being processed. You\u2019ll receive my detailed CV in your inbox shortly.',
+      cv_request_btn: 'Submit CV Request',
+      cv_form_ok: '\u2713 Your request has been submitted successfully!<br><br><small>Note: The CV will be sent manually after reviewing your request. We prefer requests from official accounts.</small>',
       ack_title: 'Acknowledgments',
       ack_alt_1: 'College of Electronic Technology, Bani Walid \u2014 Libya',
       ack_alt_2: 'YTB \u2014 T\u00fcrkiye scholarships agency',
@@ -3284,15 +3306,16 @@
       form_sending: 'Envoi en cours...',
       cv_btn_aria: 'Demander le CV détaillé',
       cv_hint_text: 'Demandez le CV détaillé',
-      cv_chat_title: 'Obtenez mon CV détaillé',
-      cv_chat_subtitle: 'Connectons-nous professionnellement',
-      cv_chat_message: 'Bonjour ! Je serais ravi de partager mon CV complet avec vous. Laissez simplement vos coordonn\u00e9es ci-dessous et je vous l\u2019enverrai rapidement.',
+      cv_chat_title: 'Formulaire de demande de CV',
+      cv_chat_subtitle: 'Formulaire de demande - Pas un chatbot',
+      cv_request_note: 'Demandez un CV détaillé dans toutes les langues',
+      cv_chat_message: 'Ceci est un formulaire de demande pour recevoir le CV complet. Veuillez remplir les informations ci-dessous pour soumettre votre demande.',
       cv_email_label: 'Votre e-mail',
       cv_email_placeholder: 'vous@entreprise.com',
       cv_purpose_label: 'Parlez-moi de votre opportunit\u00e9',
       cv_purpose_placeholder: 'Ex : Offre d\u2019emploi dans votre entreprise, proposition de collaboration, opportunit\u00e9 de recherche...',
-      cv_request_btn: 'Envoyez-moi le CV',
-      cv_form_ok: 'Parfait ! Votre demande est en cours de traitement. Vous recevrez mon CV d\u00e9taill\u00e9 dans votre bo\u00eete mail sous peu.',
+      cv_request_btn: 'Soumettre la demande',
+      cv_form_ok: '\u2713 Votre demande a été soumise avec succès !<br><br><small>Note : Le CV sera envoyé manuellement après examen de votre demande. Nous préférons les demandes provenant de comptes officiels.</small>',
       ack_title: 'Remerciements',
       ack_alt_1: 'Coll\u00e8ge de technologie \u00e9lectronique, Bani Walid \u2014 Libye',
       ack_alt_2: 'YTB \u2014 agence des bourses Turquie',
@@ -3413,15 +3436,16 @@
       form_sending: 'Gönderiliyor...',
       cv_btn_aria: 'Detaylı özgeçmiş talep et',
       cv_hint_text: 'Detaylı özgeçmiş talep edin',
-      cv_chat_title: 'Detaylı Özgeçmişimi Edinin',
-      cv_chat_subtitle: 'Profesyonel olarak ba\u011flanal\u0131m',
-      cv_chat_message: 'Merhaba! Kapsaml\u0131 \u00f6zge\u00e7mi\u015fimi sizinle payla\u015fmak isterim. Sadece bilgilerinizi b\u0131rak\u0131n, k\u0131sa s\u00fcrede size g\u00f6ndereyim.',
+      cv_chat_title: 'Özgeçmiş Talep Formu',
+      cv_chat_subtitle: 'Talep Formu - Chatbot Değil',
+      cv_request_note: 'Tüm dillerde detaylı CV talep edin',
+      cv_chat_message: 'Bu, tam özgeçmişi almak için bir talep formudur. Talebinizi göndermek için lütfen aşağıdaki bilgileri doldurun.',
       cv_email_label: 'E-posta Adresiniz',
       cv_email_placeholder: 'siz@sirket.com',
       cv_purpose_label: 'F\u0131rsat\u0131n\u0131zdan bahsedin',
       cv_purpose_placeholder: '\u00d6rn: \u015eirketinizdeki i\u015f f\u0131rsat\u0131, i\u015fbirli\u011fi teklifi, ara\u015ft\u0131rma f\u0131rsat\u0131...',
-      cv_request_btn: '\u00d6zge\u00e7mi\u015fi Bana G\u00f6nder',
-      cv_form_ok: 'M\u00fckemmel! Talebiniz i\u015fleme al\u0131n\u0131yor. Detayl\u0131 \u00f6zge\u00e7mi\u015fimi k\u0131sa s\u00fcrede e-posta kutunuzda alacaks\u0131n\u0131z.',
+      cv_request_btn: 'Talebi Gönder',
+      cv_form_ok: '\u2713 Talebiniz başarıyla gönderildi!<br><br><small>Not: Özgeçmiş, talebiniz incelendikten sonra manuel olarak gönderilecektir. Resmi hesaplardan gelen talepleri tercih ediyoruz.</small>',
       ack_title: 'Te\u015fekk\u00fcrler',
       ack_alt_1: 'Elektronik teknolojisi y\u00fcksekokulu, Bani Walid \u2014 Libya',
       ack_alt_2: 'YTB \u2014 T\u00fcrkiye burslar\u0131 kurumu',
@@ -3542,15 +3566,16 @@
       form_sending: 'Отправка...',
       cv_btn_aria: 'Запросить подробное резюме',
       cv_hint_text: 'Запросите подробное резюме',
-      cv_chat_title: 'Получите моё подробное резюме',
-      cv_chat_subtitle: '\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0441\u0432\u044f\u0436\u0435\u043c\u0441\u044f \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e',
-      cv_chat_message: '\u041f\u0440\u0438\u0432\u0435\u0442! \u042f \u0441 \u0443\u0434\u043e\u0432\u043e\u043b\u044c\u0441\u0442\u0432\u0438\u0435\u043c \u043f\u043e\u0434\u0435\u043b\u044e\u0441\u044c \u0441 \u0432\u0430\u043c\u0438 \u0441\u0432\u043e\u0438\u043c \u043f\u043e\u043b\u043d\u044b\u043c \u0440\u0435\u0437\u044e\u043c\u0435. \u041f\u0440\u043e\u0441\u0442\u043e \u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0441\u0432\u043e\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u043d\u0438\u0436\u0435, \u0438 \u044f \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044e \u0435\u0433\u043e \u0432 \u0431\u043b\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f.',
+      cv_chat_title: 'Форма запроса резюме',
+      cv_chat_subtitle: 'Форма запроса - Не чат-бот',
+      cv_request_note: 'Запросите подробное резюме на всех языках',
+      cv_chat_message: 'Это форма запроса для получения полного резюме. Пожалуйста, заполните информацию ниже, чтобы отправить запрос.',
       cv_email_label: '\u0412\u0430\u0448 e-mail',
       cv_email_placeholder: 'vy@kompaniya.ru',
       cv_purpose_label: '\u0420\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435 \u043e \u0432\u0430\u0448\u0435\u0439 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438',
       cv_purpose_placeholder: '\u041d\u0430\u043f\u0440.: \u0412\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u0432 \u0432\u0430\u0448\u0435\u0439 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438, \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0435, \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c...',
-      cv_request_btn: '\u041e\u0442\u043f\u0440\u0430\u0432\u044c\u0442\u0435 \u043c\u043d\u0435 \u0440\u0435\u0437\u044e\u043c\u0435',
-      cv_form_ok: '\u041e\u0442\u043b\u0438\u0447\u043d\u043e! \u0412\u0430\u0448 \u0437\u0430\u043f\u0440\u043e\u0441 \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0435\u0442\u0441\u044f. \u0412\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u043c\u043e\u0451 \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0435 \u0440\u0435\u0437\u044e\u043c\u0435 \u043d\u0430 \u043f\u043e\u0447\u0442\u0443 \u0432 \u0431\u043b\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f.',
+      cv_request_btn: 'Отправить запрос',
+      cv_form_ok: '\u2713 Ваш запрос успешно отправлен!<br><br><small>Примечание: Резюме будет отправлено вручную после рассмотрения вашего запроса. Мы предпочитаем запросы с официальных аккаунтов.</small>',
       ack_title: '\u0411\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u043d\u043e\u0441\u0442\u0438',
       ack_alt_1: '\u041a\u043e\u043b\u043b\u0435\u0434\u0436 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0439, \u0411\u0430\u043d\u0438-\u0412\u0430\u043b\u0438\u0434 \u2014 \u041b\u0438\u0432\u0438\u044f',
       ack_alt_2: 'YTB \u2014 \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e \u0441\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0439 T\u00fcrkiye',
@@ -3671,15 +3696,16 @@
       form_sending: 'Wird gesendet...',
       cv_btn_aria: 'Detaillierten Lebenslauf anfordern',
       cv_hint_text: 'Fordern Sie den detaillierten Lebenslauf an',
-      cv_chat_title: 'Holen Sie sich meinen detaillierten Lebenslauf',
-      cv_chat_subtitle: 'Lassen Sie uns professionell verbinden',
-      cv_chat_message: 'Hallo! Ich w\u00fcrde gerne meinen umfassenden Lebenslauf mit Ihnen teilen. Hinterlassen Sie einfach Ihre Daten und ich sende ihn Ihnen in K\u00fcrze zu.',
+      cv_chat_title: 'Lebenslauf-Anfrageformular',
+      cv_chat_subtitle: 'Anfrageformular - Kein Chatbot',
+      cv_request_note: 'Fordern Sie einen detaillierten Lebenslauf in allen Sprachen an',
+      cv_chat_message: 'Dies ist ein Anfrageformular, um den vollständigen Lebenslauf zu erhalten. Bitte füllen Sie die folgenden Informationen aus, um Ihre Anfrage zu senden.',
       cv_email_label: 'Ihre E-Mail',
       cv_email_placeholder: 'sie@firma.de',
       cv_purpose_label: 'Erz\u00e4hlen Sie mir von Ihrer M\u00f6glichkeit',
       cv_purpose_placeholder: 'z.B.: Stellenangebot in Ihrem Unternehmen, Kooperationsvorschlag, Forschungsm\u00f6glichkeit...',
-      cv_request_btn: 'Senden Sie mir den Lebenslauf',
-      cv_form_ok: 'Perfekt! Ihre Anfrage wird bearbeitet. Sie erhalten meinen detaillierten Lebenslauf in K\u00fcrze in Ihrem Posteingang.',
+      cv_request_btn: 'Anfrage senden',
+      cv_form_ok: '\u2713 Ihre Anfrage wurde erfolgreich gesendet!<br><br><small>Hinweis: Der Lebenslauf wird manuell nach Prüfung Ihrer Anfrage gesendet. Wir bevorzugen Anfragen von offiziellen Konten.</small>',
       ack_title: 'Danksagungen',
       ack_alt_1: 'Hochschule f\u00fcr Elektroniktechnik, Bani Walid \u2014 Libyen',
       ack_alt_2: 'YTB \u2014 Stipendienagentur T\u00fcrkiye',
@@ -3800,15 +3826,16 @@
       form_sending: 'Enviando...',
       cv_btn_aria: 'Solicitar CV detallado',
       cv_hint_text: 'Solicita el CV detallado',
-      cv_chat_title: 'Obtén mi CV detallado',
-      cv_chat_subtitle: 'Conectemos profesionalmente',
-      cv_chat_message: '\u00a1Hola! Me encantar\u00eda compartir mi CV completo contigo. Solo deja tus datos abajo y te lo enviar\u00e9 en breve.',
+      cv_chat_title: 'Formulario de solicitud de CV',
+      cv_chat_subtitle: 'Formulario de solicitud - No es un chatbot',
+      cv_request_note: 'Solicita CV detallado en todos los idiomas',
+      cv_chat_message: 'Este es un formulario de solicitud para recibir el CV completo. Por favor, completa la información a continuación para enviar tu solicitud.',
       cv_email_label: 'Tu correo',
       cv_email_placeholder: 'tu@empresa.com',
       cv_purpose_label: 'Cu\u00e9ntame sobre tu oportunidad',
       cv_purpose_placeholder: 'Ej.: Oferta de trabajo en tu empresa, propuesta de colaboraci\u00f3n, oportunidad de investigaci\u00f3n...',
-      cv_request_btn: 'Env\u00edame el CV',
-      cv_form_ok: '\u00a1Perfecto! Tu solicitud est\u00e1 siendo procesada. Recibir\u00e1s mi CV detallado en tu bandeja de entrada en breve.',
+      cv_request_btn: 'Enviar solicitud',
+      cv_form_ok: '\u2713 ¡Tu solicitud se ha enviado con éxito!<br><br><small>Nota: El CV se enviará manualmente después de revisar tu solicitud. Preferimos solicitudes de cuentas oficiales.</small>',
       ack_title: 'Agradecimientos',
       ack_alt_1: 'Colegio de Tecnolog\u00eda Electr\u00f3nica, Bani Walid \u2014 Libia',
       ack_alt_2: 'YTB \u2014 agencia de becas de T\u00fcrkiye',
@@ -3929,15 +3956,16 @@
       form_sending: 'Invio in corso...',
       cv_btn_aria: 'Richiedi CV dettagliato',
       cv_hint_text: 'Richiedi il CV dettagliato',
-      cv_chat_title: 'Richiedi CV',
-      cv_chat_subtitle: 'Siamo qui per aiutarti',
-      cv_chat_message: 'Ciao! Sarei felice di inviarti il mio CV completo e dettagliato. Per favore compila le seguenti informazioni e te lo invierò al pi\u00f9 presto.',
+      cv_chat_title: 'Modulo di richiesta CV',
+      cv_chat_subtitle: 'Modulo di richiesta - Non un chatbot',
+      cv_request_note: 'Richiedi CV dettagliato in tutte le lingue',
+      cv_chat_message: 'Questo è un modulo di richiesta per ricevere il CV completo. Per favore compila le seguenti informazioni per inviare la tua richiesta.',
       cv_email_label: 'Indirizzo e-mail',
       cv_email_placeholder: 'esempio@email.com',
       cv_purpose_label: 'Scopo e organizzazione',
       cv_purpose_placeholder: 'Esempio: Candidatura presso l\u2019azienda ABC o opportunit\u00e0 di collaborazione su un progetto...',
-      cv_request_btn: 'Richiedi CV',
-      cv_form_ok: 'La tua richiesta \u00e8 stata inviata con successo! Ti invieremo il CV a breve.',
+      cv_request_btn: 'Invia richiesta',
+      cv_form_ok: '\u2713 La tua richiesta è stata inviata con successo!<br><br><small>Nota: Il CV sarà inviato manualmente dopo aver esaminato la tua richiesta. Preferiamo richieste da account ufficiali.</small>',
       ack_title: 'Ringraziamenti',
       ack_alt_1: 'Istituto di tecnologie elettroniche, Bani Walid \u2014 Libia',
       ack_alt_2: 'YTB \u2014 agenzia delle borse di studio T\u00fcrkiye',
@@ -4059,14 +4087,15 @@
       cv_btn_aria: 'طلب السيرة الذاتية المفصلة',
       cv_hint_text: 'اطلب السيرة الذاتية المفصلة',
       cv_chat_title: 'طلب السيرة الذاتية',
-      cv_chat_subtitle: 'نحن هنا لمساعدتك',
-      cv_chat_message: 'مرحباً! يسعدني أن أرسل لك سيرتي الذاتية الكاملة والمفصلة. يرجى ملء المعلومات التالية وسأرسلها لك في أقرب وقت.',
+      cv_chat_subtitle: 'نموذج طلب - ليس شات بوت',
+      cv_request_note: 'اطلب CV مفصل كامل بكل اللغات',
+      cv_chat_message: 'هذا نموذج طلب للحصول على السيرة الذاتية الكاملة. يرجى ملء المعلومات التالية لإرسال الطلب.',
       cv_email_label: 'البريد الإلكتروني',
       cv_email_placeholder: 'مثال@بريد.com',
       cv_purpose_label: 'سبب الطلب والجهة',
       cv_purpose_placeholder: 'مثال: طلب توظيف في شركة ABC، أو فرصة تعاون في مشروع...',
       cv_request_btn: 'طلب السيرة الذاتية',
-      cv_form_ok: 'تم إرسال طلبك بنجاح! سنرسل لك السيرة الذاتية قريباً.',
+      cv_form_ok: '✓ تم إرسال طلبك بنجاح!<br><br><small>ملاحظة: سيتم إرسال السيرة الذاتية يدوياً بعد مراجعة الطلب. نفضل الطلبات من حسابات رسمية.</small>',
       ack_title: '\u0634\u0643\u0631 \u0648\u062a\u0642\u062f\u064a\u0631',
       ack_alt_1: 'كلية التقنية الإلكترونية، بني وليد — ليبيا',
       ack_alt_2: 'وكالة منح تركيا',
@@ -4339,7 +4368,7 @@
         const data = await res.json();
         if (data.success) {
           cvFormStatus.classList.add('is-success');
-          cvFormStatus.textContent = t('cv_form_ok') || 'تم إرسال طلبك بنجاح! سنرسل لك السيرة الذاتية قريباً.';
+          cvFormStatus.innerHTML = t('cv_form_ok') || '✓ تم إرسال طلبك بنجاح!<br><br><small>ملاحظة: سيتم إرسال السيرة الذاتية يدوياً بعد مراجعة الطلب. نفضل الطلبات من حسابات رسمية.</small>';
           
           // Hide form fields after successful submission
           setTimeout(() => {
@@ -4350,9 +4379,13 @@
             btn.style.display = 'none';
             
             // Update message
-            const chatMessage = document.querySelector('.cv-chat-message p');
+            const chatMessage = document.querySelector('.cv-chat-message');
+            const requestNote = document.querySelector('.cv-request-note');
             if (chatMessage) {
-              chatMessage.textContent = t('cv_form_ok');
+              chatMessage.style.display = 'none';
+            }
+            if (requestNote) {
+              requestNote.style.display = 'none';
             }
           }, 1500);
         } else {
