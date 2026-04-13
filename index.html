@@ -2281,11 +2281,9 @@
   }
   
   [dir="rtl"] .cv-chat-hint {
-    right: auto;
-    left: 7rem;
-    flex-direction: row-reverse;
+    display: none !important;
   }
-  
+
   [dir="rtl"] .cv-chat-hint-arrow {
     transform: scaleX(-1);
   }
@@ -2299,9 +2297,7 @@
     }
   }
   
-  [dir="rtl"] .cv-chat-hint {
-    animation: cvHintFloatRTL 3s ease-in-out infinite;
-  }
+  /* [dir="rtl"] .cv-chat-hint مخفي - لا حاجة للـ animation */
 
   @media (max-width: 768px) {
     [dir="rtl"] .cv-chat-btn {
@@ -2313,9 +2309,7 @@
       right: 1.5rem;
     }
     
-    [dir="rtl"] .cv-chat-hint {
-      left: 5.5rem;
-    }
+    /* [dir="rtl"] .cv-chat-hint مخفي */
   }
   
   /* تحسينات إضافية للشاشات الصغيرة جداً */
@@ -2348,9 +2342,7 @@
       font-size: 1rem;
     }
     
-    [dir="rtl"] .cv-chat-hint {
-      left: 4.5rem;
-    }
+    /* [dir="rtl"] .cv-chat-hint مخفي */
     
     /* تحسين صورة "من أنا" للشاشات الصغيرة جداً */
     .about-visual {
