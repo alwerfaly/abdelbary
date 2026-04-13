@@ -1757,17 +1757,14 @@
       text-align-last: start;
     }
     
-    /* تحسينات الفيديو للموبايل */
+    /* إخفاء الفيديو في الموبايل */
     .hero-video-shell {
-      height: calc(100vh - var(--nav-offset));
-      height: calc(100dvh - var(--nav-offset));
-      min-height: 400px;
-      max-height: 600px;
+      display: none;
     }
     
-    .hero-video {
-      object-fit: cover;
-      object-position: center center;
+    #hero {
+      padding: var(--nav-offset) 0 0;
+      min-height: auto;
     }
     
     /* تحسين الإطار للموبايل */
@@ -2323,10 +2320,7 @@
   
   /* تحسينات إضافية للشاشات الصغيرة جداً */
   @media (max-width: 480px) {
-    .hero-video-shell {
-      min-height: 350px;
-      max-height: 500px;
-    }
+    /* الفيديو مخفي في الموبايل */
     
     .hero-glass-frame {
       inset: 10px;
@@ -2379,15 +2373,7 @@
   
   /* تحسين للشاشات الأفقية على الموبايل */
   @media (max-width: 900px) and (max-height: 500px) {
-    .hero-video-shell {
-      height: calc(100vh - var(--nav-offset));
-      min-height: 280px;
-      max-height: none;
-    }
-    
-    .hero-video {
-      object-fit: cover;
-    }
+    /* الفيديو مخفي في الموبايل */
     
     .hero-glass-frame {
       inset: 8px;
